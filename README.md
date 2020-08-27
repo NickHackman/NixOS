@@ -1,6 +1,6 @@
 <div align="center">
   <img src="https://nixos.org/logo/nix-wiki.png" alt="NixOS Icon">
-  <h1>Git Detective</h1>
+  <h1>NixOS Config</h1>
 
   <p>
     <strong>NickHackman's Personal NixOS configuration.</strong>
