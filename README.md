@@ -22,3 +22,7 @@
 [Nix Manual](https://nixos.org/nix/manual/)
 
 [NixOS Manual](https://nixos.org/nixos/manual/)
+
+## Dotfiles
+
+For my dotfiles, they are [here](https://github.com/NickHackman/dotfiles)
