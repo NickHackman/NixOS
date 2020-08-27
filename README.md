@@ -10,7 +10,12 @@
   </p>
 </div>
 
-This is my personal NixOS configuration files, nothing really special to see here.
+## Installation
+
+- Move all files into `/etc/nixos`
+- Edit [`boot-configuration`](./boot-configuration.nix)
+  - Change `initrd.luks.devices.root.device`
+  - Change `boot.kernelParams`
 
 ## Further Configuration
 
