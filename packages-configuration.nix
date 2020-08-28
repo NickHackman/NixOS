@@ -5,8 +5,19 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Allow unfree software
-  nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.config = {
+    # Allow unfree software
+    allowUnfree = true;
+
+    # Package Overrides
+    packageOverrides = pkgs: {
+      emacs = pkgs.emacs.override {
+        withGTK3 = true;
+        withGTK2 = false;
+      };
+    };
+  };
 
   # System packages
   environment.systemPackages = with pkgs; [
