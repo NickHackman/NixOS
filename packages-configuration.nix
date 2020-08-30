@@ -64,7 +64,6 @@
 
     # Graphical applications
     kitty
-    firefox
     google-chrome
 
     # Programming
