@@ -3,8 +3,8 @@
 
 let
   environment-variables = ''
-    set STARSHIP_CONFIG /etc/nixos/configs/starship.toml
-    set GOPATH ~/.go'';
+    set -x STARSHIP_CONFIG /etc/nixos/configs/starship.toml
+    set -x GOPATH ~/.go'';
 in {
   programs.fish = {
 
