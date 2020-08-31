@@ -31,6 +31,8 @@ There are Fish aliases for `nix-shell` for certain coding environments listed in
 - [ ] Ruby
 - [ ] Shell
 
+Eventually these nix-shells will be autoloaded with [lorri](https://github.com/target/lorri) and Emacs.
+
 ## Further Configuration
 
 [Nix Manual](https://nixos.org/nix/manual/)
