@@ -17,6 +17,20 @@
   - Change `initrd.luks.devices.root.device`
   - Change `boot.kernelParams`
 
+## Nix Shells
+
+There are Fish aliases for `nix-shell` for certain coding environments listed in [shells](./shells). These are specifically setup to provide requirements for [doom-emacs](https://github.com/hlissner/doom-emacs).
+
+- [x] C/C++
+- [x] Python
+- [x] Nix
+- [ ] JavaScript
+- [ ] Golang
+- [ ] Rust
+- [ ] Ruby
+- [ ] Markdown
+- [ ] Shell
+
 ## Further Configuration
 
 [Nix Manual](https://nixos.org/nix/manual/)
