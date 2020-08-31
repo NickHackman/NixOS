@@ -21,7 +21,8 @@ in {
       mv = "mv -i";
       ps = "procs";
       top = "ytop";
-      nix-shell = "nix-shell --run fish";
+      shell = "nix-shell --run fish";
+      nix-shell = "nix-shell /etc/nixos/shells/nix-shell.nix";
       emacs = "emacsclient";
       xclip = "xclip -selection clipboard";
       "..." = "cd ../..";
