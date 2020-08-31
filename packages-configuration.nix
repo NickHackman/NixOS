@@ -5,6 +5,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [ ./configs/fish.nix ];
 
   nixpkgs.config = {
     # Allow unfree software
