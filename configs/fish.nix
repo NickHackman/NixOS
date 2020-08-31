@@ -23,6 +23,7 @@ in {
       top = "ytop";
       shell = "nix-shell --run fish";
       nix-shell = "nix-shell /etc/nixos/shells/nix-shell.nix";
+      c-shell = "nix-shell  /etc/nixos/shells/c-shell.nix";
       emacs = "emacsclient";
       xclip = "xclip -selection clipboard";
       "..." = "cd ../..";
