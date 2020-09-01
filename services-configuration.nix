@@ -32,6 +32,9 @@
     # Emacs
     emacs.defaultEditor = true;
     emacs.enable = true;
+
+    # Logind
+    logind.extraConfig = "IdleAction=lock";
   };
 
   networking = {
