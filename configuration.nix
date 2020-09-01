@@ -1,9 +1,9 @@
-# Base configuration
 { config, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
+    ./users.nix
     ./packages-configuration.nix
     ./services-configuration.nix
     ./boot-configuration.nix
@@ -29,14 +29,6 @@
   hardware.pulseaudio = {
     enable = true;
     package = pkgs.pulseaudioFull;
-  };
-
-  users.defaultUserShell = "/run/current-system/sw/bin/fish";
-
-  # Define a user account.
-  users.users.nick = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" ];
   };
 
   # Automatic system cleaning
