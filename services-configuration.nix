@@ -42,6 +42,11 @@
     geoclue2.enable = true;
   };
 
+  system.autoUpgrade = {
+    enable = true;
+    channel = "https://nixos.org/channels/nixos-20.03";
+  };
+
   location.provider = "geoclue2";
 
   networking = {
