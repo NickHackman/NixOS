@@ -35,7 +35,14 @@
 
     # Logind
     logind.extraConfig = "IdleAction=lock";
+
+    # Redshift
+    redshift.enable = true;
+
+    geoclue2.enable = true;
   };
+
+  location.provider = "geoclue2";
 
   networking = {
     hostName = "nixos";
