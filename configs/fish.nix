@@ -35,12 +35,14 @@ in {
       python-shell = "nix-shell $NIX_SHELLS/python-shell.nix";
       markdown-shell = "nix-shell $NIX_SHELLS/markdown-shell.nix";
       rust-shell = "nix-shell $NIX_SHELLS/rust-shell.nix";
+      node-shell = "nix-shell $NIX_SHELLS/node-shell.nix";
 
       # Lorri project init
       c-init = "cp $NIX_SHELLS/c-shell.nix ./shell.nix; lorri init";
       rust-init = "cp $NIX_SHELLS/rust-shell.nix ./shell.nix; lorri init";
       python-init = "cp $NIX_SHELLS/python-shell.nix ./shell.nix; lorri init";
       nix-init = "cp $NIX_SHELLS/nix-shell.nix ./shell.nix; lorri init";
+      node-init = "cp $NIX_SHELLS/node-shell.nix ./shell.nix; lorri init";
       markdown-init =
         "cp $NIX_SHELLS/markdown-shell.nix ./shell.nix; lorri init";
     };

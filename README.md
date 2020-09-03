@@ -25,7 +25,7 @@ There are Fish aliases for `nix-shell` for certain coding environments listed in
 - [x] Python
 - [x] Nix
 - [x] Markdown
-- [ ] JavaScript
+- [x] Node
 - [ ] Golang
 - [ ] Rust
 - [ ] Ruby
