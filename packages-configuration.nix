@@ -45,6 +45,8 @@
     procs
     acpi
     which
+    starship
+    neofetch
 
     # Networking
     networkmanager
@@ -54,9 +56,6 @@
     # NixOS maintenance
     nixfmt
 
-    # Stylized customization applications
-    starship
-    neofetch
     # Development
     direnv
     lorri
