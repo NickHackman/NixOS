@@ -31,7 +31,19 @@ There are Fish aliases for `nix-shell` for certain coding environments listed in
 - [ ] Ruby
 - [ ] Shell
 
-Eventually these nix-shells will be autoloaded with [lorri](https://github.com/target/lorri) and Emacs.
+These shells can be used with [lorri](https://github.com/target/lorri) and direnv - via shell aliases for init
+
+``` fish
+c-init
+
+python-init
+
+rust-init
+
+markdown-init
+
+nix-init
+```
 
 ## Further Configuration
 
