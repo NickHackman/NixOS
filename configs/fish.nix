@@ -26,6 +26,7 @@ in {
       c-shell = "nix-shell  /etc/nixos/shells/c-shell.nix";
       pyhton-shell = "nix-shell /etc/nixos/shells/python-shell.nix";
       markdown-shell = "nix-shell /etc/nixos/shells/markdown-shell.nix";
+      rust-shell = "nix-shell /etc/nixos/shells/rust-shell.nix";
       emacs = "emacsclient";
       xclip = "xclip -selection clipboard";
       "..." = "cd ../..";
