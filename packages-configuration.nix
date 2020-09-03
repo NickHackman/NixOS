@@ -26,7 +26,8 @@
     # System maintenance and productivity tools
     wget
     curl
-    emacs
+    ((emacsPackagesNgGen emacs).emacsWithPackages
+      (epkgs: [ epkgs.emacs-libvterm ]))
     vim
     bat
     fd
