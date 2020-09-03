@@ -78,9 +78,6 @@
     ruby
     rubocop
 
-    # Rust
-    rustup
-
     # Python
     (python3.withPackages
       (ps: with ps; [ black flake8 mypy python-language-server isort ]))
