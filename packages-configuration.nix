@@ -53,9 +53,6 @@
     networkmanagerapplet
     networkmanager-openconnect
 
-    # NixOS maintenance
-    nixfmt
-
     # Development
     direnv
     lorri
@@ -69,33 +66,12 @@
     kitty
     google-chrome
 
-    # Programming
-    gnumake
-
-    # Markdown
-    pandoc
-    nodePackages.prettier
-
-    # Ruby
-    ruby
-    rubocop
-
-    # Python
-    (python3.withPackages
-      (ps: with ps; [ black flake8 mypy python-language-server isort ]))
-
     # Golang
     go
     golangci-lint
     goimports
     gocode
     gotests
-
-    # C/C++
-    gcc
-    pkg-config
-    ccls
-    clang
   ];
 
   programs.zsh.enable = true;
