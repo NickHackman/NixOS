@@ -57,6 +57,9 @@
     # Stylized customization applications
     starship
     neofetch
+    # Development
+    direnv
+    lorri
 
     # Shells
     zsh

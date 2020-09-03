@@ -32,6 +32,7 @@
     # Emacs
     emacs.defaultEditor = true;
     emacs.enable = true;
+    lorri.enable = true;
 
     # Logind
     logind.extraConfig = "IdleAction=lock";
