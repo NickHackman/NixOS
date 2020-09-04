@@ -48,6 +48,7 @@
     which
     starship
     neofetch
+    fish
 
     # Networking
     networkmanager
@@ -57,10 +58,6 @@
     # Development
     direnv
     lorri
-
-    # Shells
-    zsh
-    fish
 
     # Graphical applications
     kitty
@@ -74,7 +71,6 @@
     gotests
   ];
 
-  programs.zsh.enable = true;
   programs.fish.enable = true;
   programs.light.enable = true;
   programs.nm-applet.enable = true;
