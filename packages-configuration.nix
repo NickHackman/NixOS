@@ -61,7 +61,6 @@
     # Shells
     zsh
     fish
-    shellcheck
 
     # Graphical applications
     kitty
