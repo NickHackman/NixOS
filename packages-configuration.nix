@@ -64,6 +64,8 @@ in {
     # Development
     direnv
     lorri
+    docker
+    docker-compose
 
     # Graphical applications
     kitty

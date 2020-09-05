@@ -8,7 +8,7 @@
     # Users
     users.nick = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "video" ];
+      extraGroups = [ "wheel" "networkmanager" "video" "docker" ];
     };
   };
 }
