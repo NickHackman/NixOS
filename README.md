@@ -26,24 +26,11 @@ There are Fish aliases for `nix-shell` for certain coding environments listed in
 - [x] Nix
 - [x] Markdown
 - [x] Node
-- [ ] Golang
 - [X] Rust
+- [ ] Golang
 - [ ] Ruby
-- [ ] Shell
 
-These shells can be used with [lorri](https://github.com/target/lorri) and direnv - via shell aliases for init
-
-``` fish
-c-init
-
-python-init
-
-rust-init
-
-markdown-init
-
-nix-init
-```
+These shells can be used with [lorri](https://github.com/target/lorri) and direnv - via shell aliases for init in [fish config](./configs/fish.nix).
 
 ## Further Configuration
 
