@@ -12,5 +12,9 @@ mkShell {
     ccls
     clang
     cmake
+
+    # Markdown
+    pandoc
+    nodePackages.prettier
   ];
 }

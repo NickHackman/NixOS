@@ -17,5 +17,9 @@ in mkShell {
     rustfmt
     clippy
     nixpkgs.latest.rustChannels.stable.rust
+
+    # Markdown
+    pandoc
+    nodePackages.prettier
   ];
 }
