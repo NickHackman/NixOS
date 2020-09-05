@@ -4,7 +4,13 @@
 # $ nix search ${pkg_name}
 { config, lib, pkgs, ... }:
 
-{
+let
+  unstableTarball = (builtins.fetchTarball {
+    url =
+      "https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz";
+  });
+
+in {
   imports = [ ./configs/fish.nix ];
 
   nixpkgs.config = {
@@ -13,10 +19,7 @@
 
     # Package Overrides
     packageOverrides = pkgs: {
-      emacs = pkgs.emacs.override {
-        withGTK3 = true;
-        withGTK2 = false;
-      };
+      unstable = import unstableTarball { config = config.nixpkgs.config; };
     };
   };
 
@@ -26,8 +29,11 @@
     # System maintenance and productivity tools
     wget
     curl
-    ((emacsPackagesNgGen emacs).emacsWithPackages
-      (epkgs: [ epkgs.emacs-libvterm ]))
+
+    # Emacs
+    ((unstable.emacsPackagesNgGen unstable.emacs).emacsWithPackages
+      (epkgs: [ epkgs.vterm ]))
+
     vim
     bat
     fd

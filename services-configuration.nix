@@ -31,7 +31,7 @@
 
     # Emacs
     emacs.defaultEditor = true;
-    emacs.enable = true;
+    # emacs.enable = true;
     lorri.enable = true;
 
     # Logind
