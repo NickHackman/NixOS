@@ -30,8 +30,12 @@
     blueman.enable = true;
 
     # Emacs
-    emacs.defaultEditor = true;
-    # emacs.enable = true;
+    emacs = {
+      defaultEditor = true;
+      enable = true;
+      package = pkgs.unstable.emacs;
+    };
+
     lorri.enable = true;
 
     # Logind
