@@ -10,6 +10,8 @@
     # glitches that freeze the screen after extended use.
     kernelParams = [ "i915.enable_psr=0" "quiet" "splash" ];
 
+    cleanTmpDir = true;
+
     loader = {
       # EFI Support
       efi = {
