@@ -43,7 +43,7 @@ in {
     ytop
     zip
     unzip
-    tokei
+    unstable.tokei
     du-dust
     hyperfine
     tealdeer
