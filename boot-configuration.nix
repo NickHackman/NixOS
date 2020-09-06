@@ -19,8 +19,7 @@
         efiSysMountPoint = "/boot/efi";
       };
 
-      # Systemd-boot and Grub configuration
-      systemd-boot.enable = true;
+      # Grub configuration
       grub = {
         enable = true;
         version = 2;
