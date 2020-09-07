@@ -16,8 +16,10 @@
       # EFI Support
       efi = {
         canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
+        efiSysMountPoint = "/boot";
       };
+
+      timeout = 10;
 
       # Grub configuration
       grub = {
