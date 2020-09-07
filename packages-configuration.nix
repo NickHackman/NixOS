@@ -59,13 +59,6 @@ in {
     # Graphical applications
     kitty
     google-chrome
-
-    # Golang
-    go
-    golangci-lint
-    goimports
-    gocode
-    gotests
   ];
 
   programs.fish.enable = true;
