@@ -60,6 +60,7 @@ in {
     kitty
     google-chrome
     feh
+    scrot
   ];
 
   programs.fish.enable = true;
