@@ -4,7 +4,7 @@
 # START UP
 ###############################################################
 feh --bg-scale /home/nick/.background.jpg &
-polybar main -c /etc/nixos/configs/polybar-config.ini &
+polybar main -c /etc/nixos/configs/polybar.ini &
 sxhkd &
 picom &
 blueman-applet &
