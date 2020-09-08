@@ -38,6 +38,10 @@ There are Fish aliases for `nix-shell` for certain coding environments listed in
 
 These shells can be used with [lorri](https://github.com/target/lorri) and direnv - via shell aliases for init in [fish config](./configs/fish.nix).
 
+### Future
+
+As of right now this seems like the best way to manage different programming environments in NixOS, but as [Flakes](https://www.tweag.io/blog/2020-05-25-flakes/) stabilize they could be a better alternative to having the lorri daemon running in the background.
+
 ## Further Configuration
 
 [Nix Manual](https://nixos.org/nix/manual/)
