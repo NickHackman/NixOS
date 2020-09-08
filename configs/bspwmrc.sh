@@ -3,7 +3,7 @@
 ###############################################################
 # START UP
 ###############################################################
-feh --bg-scale /home/nick/.background.jpg &
+feh --bg-scale /etc/nixos/configs/background.jpg &
 polybar main -c /etc/nixos/configs/polybar.ini &
 sxhkd &
 picom &

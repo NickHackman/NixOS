@@ -59,6 +59,7 @@ in {
     # Graphical applications
     kitty
     google-chrome
+    feh
   ];
 
   programs.fish.enable = true;
