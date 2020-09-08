@@ -46,11 +46,11 @@ As of right now this seems like the best way to manage different programming env
 
 ### Clean
 
-![clean](./screenshots/clean.png)
+![clean](./screenshots/clean-screenshot.png)
 
 ### Dirty
 
-![dirty](./screenshots/dirty.png)
+![dirty](./screenshots/dirty-screenshot.png)
 
 ## Further Configuration
 
