@@ -33,6 +33,7 @@ in {
       nix-shell = "nix-shell $NIX_SHELLS/nix-shell.nix";
       c-shell = "nix-shell  $NIX_SHELLS/c-shell.nix";
       go-shell = "nix-shell $NIX_SHELLS/go-shell.nix";
+      linux-shell = "nix-shell $NIX_SHELLS/linux-shell.nix";
       python-shell = "nix-shell $NIX_SHELLS/python-shell.nix";
       markdown-shell = "nix-shell $NIX_SHELLS/markdown-shell.nix";
       rust-shell = "nix-shell $NIX_SHELLS/rust-shell.nix";
@@ -43,6 +44,7 @@ in {
       go-init = "cp $NIX_SHELLS/go-shell.nix ./shell.nix; lorri init";
       rust-init = "cp $NIX_SHELLS/rust-shell.nix ./shell.nix; lorri init";
       python-init = "cp $NIX_SHELLS/python-shell.nix ./shell.nix; lorri init";
+      linux-init = "cp $NIX_SHELLS/linux-shell.nix ./shell.nix; lorri init";
       nix-init = "cp $NIX_SHELLS/nix-shell.nix ./shell.nix; lorri init";
       node-init = "cp $NIX_SHELLS/node-shell.nix ./shell.nix; lorri init";
       markdown-init =
