@@ -43,6 +43,7 @@ in {
       markdown-shell = shell "markdown";
       rust-shell = shell "rust";
       node-shell = shell "node";
+      java-shell = shell "java";
 
       # Lorri project init
       nix-init = init "nix";
@@ -53,6 +54,7 @@ in {
       markdown-init = init "markdown";
       rust-init = init "rust";
       node-init = init "node";
+      java-init = init "java";
     };
 
     # Fish Initializing
