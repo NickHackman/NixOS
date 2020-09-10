@@ -9,6 +9,8 @@ mkShell {
     goimports
     gocode
     gotests
+
+    # Markdown
     pandoc
     nodePackages.prettier
   ];
