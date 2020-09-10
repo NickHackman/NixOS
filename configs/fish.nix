@@ -6,6 +6,11 @@ let
     set -x STARSHIP_CONFIG /etc/nixos/configs/starship.toml
     set -x NIX_SHELLS /etc/nixos/shells
     set -x GOPATH ~/.go'';
+
+  shell = lang: "nix-shell $NIX_SHELLS/${lang}-shell.nix";
+
+  init = lang: "cp $NIX_SHELLS/${lang}-shell.nix ./shell.nix; lorri init";
+
 in {
   programs.fish = {
 
@@ -28,27 +33,26 @@ in {
 
       nix-config = "$EDITOR /etc/nixos/.";
 
-      # Base language shells
+      # Language shells
       shell = "nix-shell --run fish";
-      nix-shell = "nix-shell $NIX_SHELLS/nix-shell.nix";
-      c-shell = "nix-shell  $NIX_SHELLS/c-shell.nix";
-      go-shell = "nix-shell $NIX_SHELLS/go-shell.nix";
-      linux-shell = "nix-shell $NIX_SHELLS/linux-shell.nix";
-      python-shell = "nix-shell $NIX_SHELLS/python-shell.nix";
-      markdown-shell = "nix-shell $NIX_SHELLS/markdown-shell.nix";
-      rust-shell = "nix-shell $NIX_SHELLS/rust-shell.nix";
-      node-shell = "nix-shell $NIX_SHELLS/node-shell.nix";
+      nix-shell = shell "nix";
+      c-shell = shell "c";
+      go-shell = shell "go";
+      linux-shell = shell "linux";
+      python-shell = shell "python";
+      markdown-shell = shell "markdown";
+      rust-shell = shell "rust";
+      node-shell = shell "node";
 
       # Lorri project init
-      c-init = "cp $NIX_SHELLS/c-shell.nix ./shell.nix; lorri init";
-      go-init = "cp $NIX_SHELLS/go-shell.nix ./shell.nix; lorri init";
-      rust-init = "cp $NIX_SHELLS/rust-shell.nix ./shell.nix; lorri init";
-      python-init = "cp $NIX_SHELLS/python-shell.nix ./shell.nix; lorri init";
-      linux-init = "cp $NIX_SHELLS/linux-shell.nix ./shell.nix; lorri init";
-      nix-init = "cp $NIX_SHELLS/nix-shell.nix ./shell.nix; lorri init";
-      node-init = "cp $NIX_SHELLS/node-shell.nix ./shell.nix; lorri init";
-      markdown-init =
-        "cp $NIX_SHELLS/markdown-shell.nix ./shell.nix; lorri init";
+      nix-init = init "nix";
+      c-init = init "c";
+      go-init = init "go";
+      linux-init = init "linux";
+      python-init = init "python";
+      markdown-init = init "markdown";
+      rust-init = init "rust";
+      node-init = init "node";
     };
 
     # Fish Initializing
