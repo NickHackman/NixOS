@@ -28,7 +28,7 @@
         device = "nodev";
         efiSupport = true;
         enableCryptodisk = true;
-        configurationLimit = 30;
+        configurationLimit = 15;
         copyKernels = true;
       };
     };
