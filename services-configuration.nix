@@ -40,21 +40,29 @@ in {
 
     lorri.enable = true;
 
-    # Logind
     logind.extraConfig = "IdleAction=lock";
 
-    # Redshift
     redshift.enable = true;
-
     geoclue2.enable = true;
   };
 
+  # Automatic upgrading
   system.autoUpgrade = {
     enable = true;
     channel = "https://nixos.org/channels/nixos-20.03";
   };
 
+  # Automatic system cleaning
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
+  powerManagement.powertop.enable = true;
+
   location.provider = "geoclue2";
+  sound.enable = true;
 
   networking = {
     hostName = "nixos";
