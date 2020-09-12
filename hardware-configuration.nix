@@ -33,5 +33,18 @@
   nix.maxJobs = lib.mkDefault 12;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
-  hardware.cpu.intel.updateMicrocode = true;
+  hardware = {
+    cpu.intel.updateMicrocode = true;
+    bluetooth.enable = true;
+    opengl = {
+      driSupport32Bit = true;
+      extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
+    };
+
+    pulseaudio = {
+      support32Bit = true;
+      enable = true;
+      package = pkgs.pulseaudioFull;
+    };
+  };
 }
