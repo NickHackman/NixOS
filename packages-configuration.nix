@@ -56,11 +56,13 @@ in {
     docker
     docker-compose
 
-    # Graphical applications
+    # Bspwm
     kitty
     google-chrome
     feh
     scrot
+    xbindkeys
+    playerctl
   ];
 
   programs.fish.enable = true;
@@ -80,10 +82,6 @@ in {
 
   # Nick's packages
   users.extraUsers.nick.packages = with pkgs; [
-
-    # X11 Keybinds
-    xbindkeys
-    playerctl
 
     # Themes
     numix-cursor-theme
