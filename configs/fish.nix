@@ -7,9 +7,38 @@ let
     set -x NIX_SHELLS /etc/nixos/shells
     set -x GOPATH ~/.go'';
 
-  shell = lang: "nix-shell $NIX_SHELLS/${lang}-shell.nix";
+  # List of supported languages for Nix Shells and Lorri inits
+  langs = [ "c" "go" "rust" "node" "java" "python" "markdown" "nix" "linux" ];
 
-  init = lang: "cp $NIX_SHELLS/${lang}-shell.nix ./shell.nix; lorri init";
+  # Maps `langs` to a Set of keys where each is of the form
+  # "${lang}-shell" = "nix-shell $NIX_SHELLS/${lang}-shell.nix".
+  #
+  # Example:
+  #
+  # {
+  #   c-shell = "nix-shell $NIX_SHELLS/c-shell.nix";
+  #   go-shell = "nix-shell $NIX_SHELLS/go-shell.nix";
+  #   ...
+  # }
+  shells = builtins.listToAttrs (map (lang: {
+    name = "${lang}-shell";
+    value = "nix-shell $NIX_SHELLS/${lang}-shell.nix";
+  }) langs);
+
+  # Maps `langs` to a Set of where each is of the form
+  # "${lang}-init" = "cp $NIX_SHELLS/${lang}-shell.nix ./shell.nix; lorri init".
+  #
+  # Example:
+  #
+  # {
+  #   c-init = "cp $NIX_SHELLS/c-shell.nix ./shell.nix; lorri init";
+  #   go-init = "cp $NIX_SHELLS/go-shell.nix ./shell.nix; lorri init";
+  #   ...
+  # }
+  inits = builtins.listToAttrs (map (lang: {
+    name = "${lang}-init";
+    value = "cp $NIX_SHELLS/${lang}-shell.nix ./shell.nix; lorri init";
+  }) langs);
 
 in {
   programs.fish = {
@@ -31,31 +60,10 @@ in {
       xclip = "xclip -selection clipboard";
       "..." = "cd ../..";
 
+      # Nix aliases
       nix-config = "$EDITOR /etc/nixos/.";
-
-      # Language shells
       shell = "nix-shell --run fish";
-      nix-shell = shell "nix";
-      c-shell = shell "c";
-      go-shell = shell "go";
-      linux-shell = shell "linux";
-      python-shell = shell "python";
-      markdown-shell = shell "markdown";
-      rust-shell = shell "rust";
-      node-shell = shell "node";
-      java-shell = shell "java";
-
-      # Lorri project init
-      nix-init = init "nix";
-      c-init = init "c";
-      go-init = init "go";
-      linux-init = init "linux";
-      python-init = init "python";
-      markdown-init = init "markdown";
-      rust-init = init "rust";
-      node-init = init "node";
-      java-init = init "java";
-    };
+    } // shells // inits;
 
     # Fish Initializing
     shellInit = ''
