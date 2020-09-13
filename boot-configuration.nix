@@ -4,6 +4,8 @@
 {
   boot = {
 
+    kernelPackages = pkgs.linuxPackages_latest;
+
     # Linux Kernel Parameters
     #
     # Dell XPS 13 (7390) requires "i915.enable_psr=0" otherwise the screen will get random graphical
