@@ -39,6 +39,7 @@ in {
     killall
     xclip
     procs
+    jq
     acpi
     which
     starship
