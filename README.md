@@ -36,6 +36,7 @@ There are Fish aliases for `nix-shell` for certain coding environments listed in
 - [x] Golang
 - [x] Java
 - [x] Linux Kernel
+- [x] Elm
 - [ ] Ruby
 
 These shells can be used with [lorri](https://github.com/target/lorri) and direnv - via shell aliases for init in [fish config](./configs/fish.nix).

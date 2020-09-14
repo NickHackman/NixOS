@@ -8,7 +8,8 @@ let
     set -x GOPATH ~/.go'';
 
   # List of supported languages for Nix Shells and Lorri inits
-  langs = [ "c" "go" "rust" "node" "java" "python" "markdown" "nix" "linux" ];
+  langs =
+    [ "elm" "c" "go" "rust" "node" "java" "python" "markdown" "nix" "linux" ];
 
   # Maps `langs` to a Set of keys where each is of the form
   # "${lang}-shell" = "nix-shell $NIX_SHELLS/${lang}-shell.nix".
