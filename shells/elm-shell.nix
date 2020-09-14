@@ -4,10 +4,7 @@ with pkgs;
 
 mkShell {
   buildInputs = with pkgs; [
-    haskellPackages.elm-make
-    haskellPackages.elm-repl
-    haskellPackages.elm-reactor
-    haskellPackages.elm-package
+    elmPackages.elm
     nodePackages.elm-oracle
     elmPackages.elm-format
     elmPackages.elm-test
