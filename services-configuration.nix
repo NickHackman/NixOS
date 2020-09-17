@@ -13,7 +13,30 @@ in {
       enable = true;
       layout = "us";
       libinput.enable = true;
-      displayManager.defaultSession = "none+bspwm";
+      displayManager = {
+        defaultSession = "none+bspwm";
+
+        lightdm = {
+          background = "/etc/nixos/backgrounds/lightdm.png";
+
+          greeters.gtk = {
+            cursorTheme.name = "Numix-Cursor-Light";
+            iconTheme.name = "Papirus-Light";
+
+            # 5 Tabs in - in order to center the time
+            clock-format = "%t%t%t%I:%M %p %b %d %Y";
+            indicators = [
+              "~host"
+              "~spacer"
+              "~clock"
+              "~spacer"
+              "~session"
+              "~language"
+              "~power"
+            ];
+          };
+        };
+      };
 
       # Switch capslock and escape
       xkbOptions = "caps:swapescape";
