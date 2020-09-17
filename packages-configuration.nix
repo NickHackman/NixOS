@@ -65,6 +65,9 @@ in {
     scrot
     xbindkeys
     playerctl
+    numix-cursor-theme
+    papirus-icon-theme
+    lxappearance
   ];
 
   programs.fish.enable = true;
@@ -84,11 +87,6 @@ in {
 
   # Nick's packages
   users.extraUsers.nick.packages = with pkgs; [
-
-    # Themes
-    numix-cursor-theme
-    papirus-icon-theme
-    lxappearance
 
     # Applications
     discord
