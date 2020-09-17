@@ -15,5 +15,7 @@ mkShell {
     bc
     flex
     bison
+    ccls
+    clang
   ];
 }
