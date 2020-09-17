@@ -29,6 +29,7 @@ in {
     exa
     ripgrep
     git
+    unstable.gitAndTools.gh
     ytop
     zip
     unzip
