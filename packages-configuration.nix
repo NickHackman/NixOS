@@ -92,7 +92,7 @@ in {
     discord
     dmenu
     gimp
-    rofi
+    unstable.rofi
     slack
     spotify
     tdesktop # telegram-desktop
