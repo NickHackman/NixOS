@@ -2,9 +2,11 @@
 { config, lib, pkgs, ... }:
 
 let
+  # Shell environment variables
   environment-variables = ''
     set -x STARSHIP_CONFIG /etc/nixos/configs/starship.toml
     set -x NIX_SHELLS /etc/nixos/shells
+    set -x EDITOR emacsclient
     set -x GOPATH ~/.go'';
 
   # List of supported languages for Nix Shells and Lorri inits
