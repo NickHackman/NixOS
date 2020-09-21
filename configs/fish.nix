@@ -21,8 +21,8 @@ let
   # set -x NIX_SHELLS /etc/nixos/shells
   # ...
   # '';
-  fish-environment-variables = lib.fold (a: b: a + b) "" (builtins.attrValues
-    (builtins.mapAttrs (variable: value: ''
+  fish-environment-variables = with builtins;
+    lib.fold (a: b: a + b) "" (attrValues (mapAttrs (variable: value: ''
       set -x ${variable} ${value}
     '') envVariables));
 
