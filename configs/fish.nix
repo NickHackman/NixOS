@@ -46,17 +46,22 @@ in {
 
     # Shell aliases
     shellAliases = {
+      # Rust replacements for GNU Coreutils
       ls = "exa --icons --git";
       l = "exa --icons --git -l";
       la = "exa --icons --git -la";
       cat = "bat";
       grep = "rg";
+      find = "fd";
       du = "dust";
+      ps = "procs";
+      top = "ytop";
+
+      # Interactive destructive commands
       rm = "rm -i";
       cp = "cp -i";
       mv = "mv -i";
-      ps = "procs";
-      top = "ytop";
+
       emacs = "emacsclient";
       xclip = "xclip -selection clipboard";
       "..." = "cd ../..";
