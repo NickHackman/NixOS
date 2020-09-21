@@ -3,15 +3,28 @@
 
 let
   # Shell environment variables
-  environment-variables = ''
-    set -x STARSHIP_CONFIG /etc/nixos/configs/starship.toml
-    set -x NIX_SHELLS /etc/nixos/shells
-    set -x EDITOR emacsclient
-    set -x GOPATH ~/.go'';
+  envVariables = {
+    STARSHIP_CONFIG = "/etc/nixos/configs/starship.toml";
+    NIX_SHELLS = "/etc/nixos/shells";
+    EDITOR = "emacsclient";
+    GOPATH = "~/.go";
+  };
 
   # List of supported languages for Nix Shells and Lorri inits
   langs =
     [ "elm" "c" "go" "rust" "node" "java" "python" "markdown" "nix" "linux" ];
+
+  # Maps and folds `envVariables` into a String of the form
+  #
+  # ''
+  # set -x STARSHIP_CONFIG /etc/nixos/configs/starship.toml
+  # set -x NIX_SHELLS /etc/nixos/shells
+  # ...
+  # '';
+  fish-environment-variables = lib.foldr (a: b: a + b) "" (builtins.attrValues
+    (builtins.mapAttrs (variable: value: ''
+      set -x ${variable} ${value}
+    '') envVariables));
 
   # Maps `langs` to a Set of keys where each is of the form
   # "${lang}-shell" = "nix-shell $NIX_SHELLS/${lang}-shell.nix".
@@ -75,7 +88,7 @@ in {
 
     # Fish Initializing
     shellInit = ''
-      ${environment-variables}
+      ${fish-environment-variables}
 
       fish_vi_key_bindings
       starship init fish | source'';
