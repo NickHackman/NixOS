@@ -68,6 +68,8 @@ in {
     numix-cursor-theme
     papirus-icon-theme
     lxappearance
+    unstable.rofi
+    polybar
   ];
 
   programs.fish.enable = true;
@@ -92,12 +94,10 @@ in {
     discord
     dmenu
     gimp
-    unstable.rofi
     slack
     spotify
     tdesktop # telegram-desktop
     zoom-us
-    polybar
     libreoffice
     steam
   ];
