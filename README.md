@@ -55,6 +55,10 @@ As of right now this seems like the best way to manage different programming env
 
 ![dirty](./screenshots/dirty-screenshot.png)
 
+### Rofi
+
+![rofi](./screenshots/rofi-screenshot.png)
+
 ## Further Configuration
 
 [Nix Manual](https://nixos.org/nix/manual/)
