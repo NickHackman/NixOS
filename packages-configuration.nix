@@ -4,13 +4,22 @@
 # $ nix search ${pkg_name}
 { config, lib, pkgs, ... }:
 
-let unstable = import <nixos-unstable> { };
+let
+
+  unstableTarball = fetchTarball
+    "https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz";
+
+  unstable = import unstableTarball { config = config.nixpkgs.config; };
 
 in {
   imports = [ ./configs/fish.nix ];
 
-  # Allow unfree software
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    # Allow unfree software
+    allowUnfree = true;
+
+    packageOverrides = pkgs: { unstable = unstable; };
+  };
 
   # System packages
   environment.systemPackages = with pkgs; [

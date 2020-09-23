@@ -16,13 +16,6 @@
 - Edit [`boot-configuration`](./boot-configuration.nix)
   - Change `initrd.luks.devices.root.device`
   - Change `boot.kernelParams`
-- Add channel `<nixos-unstable>`
-
-```sh
-sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixos-unstable
-
-sudo nix-channel --update
-```
 
 ## Nix Shells
 

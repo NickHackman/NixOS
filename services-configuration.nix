@@ -1,9 +1,7 @@
 # Configuration file that contains system services and Xorg configuration
 { config, lib, pkgs, ... }:
 
-let unstable = import <nixos-unstable> { };
-
-in {
+{
   services = {
 
     # Xorg Configuration
@@ -58,7 +56,7 @@ in {
     emacs = {
       defaultEditor = true;
       enable = true;
-      package = unstable.emacs;
+      package = pkgs.unstable.emacs;
     };
 
     lorri.enable = true;
