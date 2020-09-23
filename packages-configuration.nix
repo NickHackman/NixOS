@@ -80,6 +80,7 @@ in {
     fira-code
     fira-code-symbols
     noto-fonts
+    nerdfonts
     noto-fonts-emoji
     fantasque-sans-mono
     hack-font
