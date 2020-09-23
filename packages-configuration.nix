@@ -97,7 +97,7 @@ in {
     spotify
     lxappearance
     tdesktop # telegram-desktop
-    zoom-us
+    unstable.zoom-us
     libreoffice
     steam
   ];
