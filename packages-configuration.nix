@@ -67,7 +67,6 @@ in {
     playerctl
     numix-cursor-theme
     papirus-icon-theme
-    lxappearance
     unstable.rofi
     polybar
   ];
@@ -96,6 +95,7 @@ in {
     gimp
     slack
     spotify
+    lxappearance
     tdesktop # telegram-desktop
     zoom-us
     libreoffice
