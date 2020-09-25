@@ -24,14 +24,13 @@ in {
   # System packages
   environment.systemPackages = with pkgs; [
 
-    # System maintenance and productivity tools
-    wget
-    curl
-
     # Emacs
     ((unstable.emacsPackagesNgGen unstable.emacs).emacsWithPackages
       (epkgs: [ epkgs.vterm ]))
 
+    # System maintenance and productivity tools
+    wget
+    curl
     vim
     bat
     fd
