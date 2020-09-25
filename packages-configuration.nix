@@ -78,7 +78,6 @@ in {
     polybar
   ];
 
-  programs.fish.enable = true;
   programs.light.enable = true;
   programs.nm-applet.enable = true;
 

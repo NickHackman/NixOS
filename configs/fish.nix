@@ -58,6 +58,7 @@ let
 
 in {
   programs.fish = {
+    enable = true;
 
     # Shell aliases
     shellAliases = {
