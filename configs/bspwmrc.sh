@@ -17,6 +17,7 @@ bspc monitor -d I II III IV V VI VII VIII IX X
 
 bspc config border_width         2
 bspc config window_gap          10
+bspc config focused_border_color \#7B873C
 
 bspc config split_ratio          0.50
 bspc config borderless_monocle   true
