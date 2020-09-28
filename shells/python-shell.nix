@@ -2,9 +2,15 @@
 
 with pkgs;
 
-mkShell {
+let
+  unstableTarball = fetchTarball
+    "https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz";
+
+  unstable = import unstableTarball { };
+
+in mkShell {
   buildInputs = with pkgs; [
-    (python3.withPackages
+    (unstable.python3.withPackages
       (ps: with ps; [ black flake8 mypy python-language-server isort ]))
 
     # Markdown
