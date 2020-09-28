@@ -8,7 +8,7 @@ polybar main -c /etc/nixos/configs/polybar.ini &
 sxhkd &
 picom &
 blueman-applet &
-xbindkeys -f /etc/nixos/configs/xbindkeysrc &
+xbindkeys -f /etc/nixos/configs/xbindkeysrc
 
 ###############################################################
 # CONFIGURATION
