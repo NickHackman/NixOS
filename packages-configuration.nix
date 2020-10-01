@@ -61,7 +61,7 @@ in {
 
     # Development
     direnv
-    lorri
+    unstable.lorri
     docker
     docker-compose
 
