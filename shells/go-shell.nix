@@ -9,6 +9,7 @@ mkShell {
     goimports
     gocode
     gotests
+    richgo
 
     # Markdown
     pandoc
