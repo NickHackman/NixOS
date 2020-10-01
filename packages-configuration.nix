@@ -65,6 +65,11 @@ in {
     docker
     docker-compose
 
+    # HACK:
+    # Go needs to be installed Globally, otherwise it breaks Gopls even when used with Lorri.
+    # This seems like a bug and this is just a fast fix for it.
+    go
+
     # Bspwm
     kitty
     google-chrome
