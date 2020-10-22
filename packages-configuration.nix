@@ -22,15 +22,12 @@ in {
 
   # System packages
   environment.systemPackages = with pkgs; [
-
-    # Emacs
-    ((unstable.emacsPackagesNgGen unstable.emacs).emacsWithPackages
-      (epkgs: [ epkgs.vterm ]))
+    neovim
+    nodejs
 
     # System maintenance and productivity tools
     wget
     curl
-    vim
     bat
     fd
     exa

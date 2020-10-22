@@ -72,6 +72,8 @@ in {
       du = "dust";
       ps = "procs";
       top = "ytop";
+      vim = "nvim";
+      vi = "nvim";
 
       # Interactive destructive commands
       rm = "rm -i";
