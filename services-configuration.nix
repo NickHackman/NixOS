@@ -42,8 +42,8 @@
       # Desktop Environments and Window Managers
       windowManager.bspwm = {
         enable = true;
-        configFile = "/etc/nixos/configs/bspwmrc.sh";
-        sxhkd.configFile = "/etc/nixos/configs/sxhkdrc.sh";
+        configFile = "/etc/nixos/.config/bspwmrc.sh";
+        sxhkd.configFile = "/etc/nixos/.config/sxhkdrc.sh";
       };
     };
 

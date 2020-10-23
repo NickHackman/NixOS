@@ -11,7 +11,7 @@ let
   unstable = import unstableTarball { config = config.nixpkgs.config; };
 
 in {
-  imports = [ ./configs/fish.nix ];
+  imports = [ ./.config/fish.nix ];
 
   nixpkgs.config = {
     # Allow unfree software
@@ -61,11 +61,23 @@ in {
     unstable.lorri
     docker
     docker-compose
-
-    # HACK:
-    # Go needs to be installed Globally, otherwise it breaks Gopls even when used with Lorri.
-    # This seems like a bug and this is just a fast fix for it.
     go
+    tmux
+    gnumake
+    gcc
+    pkg-config
+    ccls
+    clang
+    cmake
+    pandoc
+    nodePackages.prettier
+    pipenv
+    (unstable.python3.withPackages
+      (ps: with ps; [ flake8 mypy python-language-server isort black jedi]))
+    openjdk11
+    gradle
+    nixfmt
+    nodePackages.vim-language-server
 
     # Bspwm
     kitty
