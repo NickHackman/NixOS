@@ -117,16 +117,23 @@ endfunction
 " {{{ Keybindings
 nnoremap <SPACE> <Nop>
 let mapleader=" "
+map <leader>; <Plug>NERDCommenterToggle('n', 'Toggle')<Cr>
+
+" {{{ Navigation
 nnoremap <leader>w <C-w>
-map <leader>gg :Git<CR>
 map <leader>t :NERDTreeToggle<CR>
 map <leader><leader> :Files<CR>
 map <leader>b :Buffers<CR>
 map <leader>s :Rg <C-r><C-w><CR>
-map <leader>; <Plug>NERDCommenterToggle('n', 'Toggle')<Cr>
 map <leader>- :e .<CR>
 map <leader>fp :Files ~/.config/nvim/<CR>
 map <leader>, :bprev<CR>
+let NERDTreeMapUpdir = '-'
+let NERDTreeMapCustomOpen = '<tab>'
+let NERDTreeMapChangeRoot = '<CR>'
+" }}}
+
+" {{{ Coc-nvim
 map <leader>e :CocDiagnostics<CR>
 map <leader><CR> :call LookupShortcut()<CR>
 nmap <silent> cd <Plug>(coc-definition)
@@ -135,9 +142,6 @@ nmap <silent> ci <Plug>(coc-implementation)
 nmap <leader>rn <Plug>(coc-rename)
 nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-let NERDTreeMapUpdir = '-'
-let NERDTreeMapCustomOpen = '<tab>'
-let NERDTreeMapChangeRoot = '<CR>'
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -149,6 +153,88 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+" }}}
+
+" {{{ Markdown keybindings
+
+let s:headersRegexp = '\v^(#|.+\n(\=+|-+)$)'
+
+" ToggleHeader toggles a Fold created by vim-markdown below a Header
+function! ToggleHeader()
+    let l:line = line('.')
+    if getline(l:line) =~ s:headersRegexp
+        " Move cursor down to possible fold
+        call cursor(l:line + 1, 1)
+
+        if foldclosed(l:line + 1) == -1
+            foldclose
+        else
+            foldopen
+        endif
+        call cursor(l:line, 1)
+    endif 
+endfunction
+
+augroup Markdown
+    autocmd! Markdown
+    autocmd FileType markdown map K <Plug>Markdown_OpenUrlUnderCursor
+    autocmd FileType markdown nmap <silent> <Tab> :call ToggleHeader()<CR>
+augroup end
+
+" }}}
+
+" {{{ Fugitive Keybindings
+
+
+" Push wraps around Fugitive functionality to automatically to push to the
+" remote branch
+"
+" TODO: Handle other remotes than just origin
+function! Push(force)
+    let l:head = FugitiveHead('.')
+    " HEAD is detached
+    if empty(l:head)
+        return
+    endif
+
+    let l:force = ''
+    if a:force
+        l:force = ' --force'
+    endif
+
+    execute 'Gpush origin ' . l:head . l:force
+endfunction
+
+" Pull wraps around Fugitive functionality to automatically to pull from the
+" remote branch
+"
+" TODO: Handle other remotes than just origin
+function! Pull()
+    let l:head = FugitiveHead('.')
+    " HEAD is detached
+    if empty(l:head)
+        return
+    endif
+
+    execute 'Gpull origin ' . l:head
+endfunction
+
+map <leader>gg :Git<CR>
+
+augroup Fugitive
+    autocmd! Fugitive
+
+    autocmd FileType fugitive map <Tab> =
+
+
+    autocmd FileType fugitive map <leader>pp :call Push(0)<CR>
+    autocmd FileType fugitive map <leader>pf :call Push(1)<CR>
+    autocmd FileType fugitive map <leader>F  :call Pull()<CR>
+    autocmd FileType fugitive map <leader>ff :Git fetch<CR>
+    autocmd FileType fugitive map <leader>fa :Git fetch --all<CR>
+    autocmd FileType fugitive map <leader>ft :Git fetch --tags<CR>
+augroup end
+" }}}
 " }}}
 
 " {{{ Fzf Configuration
