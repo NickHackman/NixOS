@@ -161,17 +161,17 @@ let s:headersRegexp = '\v^(#|.+\n(\=+|-+)$)'
 
 " ToggleHeader toggles a Fold created by vim-markdown below a Header
 function! ToggleHeader()
-    let l:line = line('.')
-    if getline(l:line) =~ s:headersRegexp
+    let line = line('.')
+    if getline(line) =~ s:headersRegexp
         " Move cursor down to possible fold
-        call cursor(l:line + 1, 1)
+        call cursor(line + 1, 1)
 
-        if foldclosed(l:line + 1) == -1
+        if foldclosed(line + 1) == -1
             foldclose
         else
             foldopen
         endif
-        call cursor(l:line, 1)
+        call cursor(line, 1)
     endif 
 endfunction
 
@@ -191,18 +191,18 @@ augroup end
 "
 " TODO: Handle other remotes than just origin
 function! Push(force)
-    let l:head = FugitiveHead('.')
+    let head = FugitiveHead('.')
     " HEAD is detached
-    if empty(l:head)
+    if empty(head)
         return
     endif
 
-    let l:force = ''
+    let force = ''
     if a:force
-        l:force = ' --force'
+        force = ' --force'
     endif
 
-    execute 'Gpush origin ' . l:head . l:force
+    execute 'Gpush origin ' . head . force
 endfunction
 
 " Pull wraps around Fugitive functionality to automatically to pull from the
@@ -210,13 +210,107 @@ endfunction
 "
 " TODO: Handle other remotes than just origin
 function! Pull()
-    let l:head = FugitiveHead('.')
+    let head = FugitiveHead('.')
     " HEAD is detached
-    if empty(l:head)
+    if empty(head)
         return
     endif
 
-    execute 'Gpull origin ' . l:head
+    execute 'Gpull origin ' . head
+endfunction
+
+" SelectBranch lists all branches using Fzf to user and calls closure on
+" selected.
+"
+" Parameters:
+"
+" closure: cref
+"   Closure to call when a branch is selected.
+"   NOTE: cref is passed a LIST that can be empty
+"
+" includeHead: bool
+"   Whether or not to include the Head branch in the selectable list
+"
+" includeRemotes: bool
+"   Whether or not to include remotes
+function! SelectBranch(closure, includeHead, includeRemotes)
+    let Closure = a:closure
+    let cmd = 'git branch --list'
+    if a:includeRemotes
+        let cmd = cmd . ' -a'
+    endif
+
+    let output = system(cmd)
+    let allBranches = split(output)
+    let branches = []
+
+    if !a:includeHead
+        let index = index(allBranches, '*')
+
+        if !index
+            echom 'No other branches'
+            return
+        endif
+
+        let branches = allBranches[:index - 1] + allBranches[index + 2:]
+    else
+        let branches = filter(allBranches, 'v:val != "*"')
+    endif
+
+    if empty(branches)
+        return
+    endif
+
+    call fzf#run({'source': branches, 'sink*': a:closure, 'down': '20%'})
+endfunction
+
+" CheckoutBranch checkout selected branch 
+"
+" NOTE: callback for SelectBranch
+function! CheckoutBranch(branch)
+    execute 'Git checkout ' . a:branch[0]
+endfunction
+
+" CheckoutCreateBranch create a new branch and checkout the new branch
+"
+" NOTE: callback for SelectBranch
+function! CheckoutCreateBranch(branch)
+    if empty(a:branch[0])
+        return
+    endif
+
+    call inputsave()
+    let newBranch = input('[Starting: ' . a:branch[0] . '] Branch to checkout: ')
+    call inputrestore()
+    silent execute 'Git checkout -b ' . newBranch . ' ' . a:branch[0]
+endfunction
+
+" BranchRename callback for SelectBranch
+"
+" NOTE: callback for SelectBranch
+function! BranchRename(branch)
+    if empty(a:branch[0])
+        return
+    endif
+
+    call inputsave()
+    let newBranch = input('Rename ' . a:branch[0] . ' to: ')
+    call inputrestore()
+    execute 'Git branch --move ' . a:branch[0] . ' ' . newBranch
+endfunction
+
+" BranchDelete delete a branch
+"
+" NOTE: callback for SelectBranch
+function! BranchDelete(branch)
+    if empty(a:branch[0])
+        return
+    endif
+
+    call inputsave()
+    let confirm = input('Delete ' . a:branch[0] . ' [y/N]: ')
+    call inputrestore()
+    execute 'Git branch --delete ' a:branch[0]
 endfunction
 
 map <leader>gg :Git<CR>
@@ -226,13 +320,22 @@ augroup Fugitive
 
     autocmd FileType fugitive map <Tab> =
 
-
+    " Push keybinds
     autocmd FileType fugitive map <leader>pp :call Push(0)<CR>
     autocmd FileType fugitive map <leader>pf :call Push(1)<CR>
     autocmd FileType fugitive map <leader>F  :call Pull()<CR>
+
+    " Fetch keybinds
     autocmd FileType fugitive map <leader>ff :Git fetch<CR>
     autocmd FileType fugitive map <leader>fa :Git fetch --all<CR>
     autocmd FileType fugitive map <leader>ft :Git fetch --tags<CR>
+
+    " Branch keybinds
+    autocmd FileType fugitive map <leader>bl :call SelectBranch(function('CheckoutBranch'), 0, 0)<CR>
+    autocmd FileType fugitive map <leader>bc :call SelectBranch(function('CheckoutCreateBranch'), 1, 1)<CR>
+    autocmd FileType fugitive map <leader>bn :call SelectBranch(function('CheckoutCreateBranch'), 1, 1)<CR>
+    autocmd FileType fugitive map <leader>br :call SelectBranch(function('BranchRename'), 1, 0)<CR>
+    autocmd FileType fugitive map <leader>bd :call SelectBranch(function('BranchDelete'), 0, 0)<CR>
 augroup end
 " }}}
 " }}}
