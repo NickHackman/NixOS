@@ -42,7 +42,7 @@ let g:coc_global_extensions = [
     \ 'coc-rust-analyzer',
     \ 'coc-json',
     \ 'coc-prettier',
-    \ 'coc-ttsever',
+    \ 'coc-tsserver',
     \ 'coc-spell-checker',
     \ 'coc-highlight',
     \ ]
