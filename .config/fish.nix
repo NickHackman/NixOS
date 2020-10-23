@@ -4,7 +4,7 @@
 let
   # Shell environment variables
   envVariables = {
-    STARSHIP_CONFIG = "/etc/nixos/configs/starship.toml";
+    STARSHIP_CONFIG = "/etc/nixos/.config/starship.toml";
     NIX_SHELLS = "/etc/nixos/shells";
     EDITOR = "emacsclient";
     GOPATH = "~/.go";
@@ -17,7 +17,7 @@ let
   # Maps and folds `envVariables` into a String of the form
   #
   # ''
-  # set -x STARSHIP_CONFIG /etc/nixos/configs/starship.toml
+  # set -x STARSHIP_CONFIG /etc/nixos/.config/starship.toml
   # set -x NIX_SHELLS /etc/nixos/shells
   # ...
   # '';

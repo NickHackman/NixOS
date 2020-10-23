@@ -4,11 +4,11 @@
 # START UP
 ###############################################################
 feh --bg-scale /etc/nixos/backgrounds/desktop.jpg &
-polybar main -c /etc/nixos/configs/polybar.ini &
+polybar main -c /etc/nixos/.config/polybar.ini &
 sxhkd &
 picom &
 blueman-applet &
-xbindkeys -f /etc/nixos/configs/xbindkeysrc
+xbindkeys -f /etc/nixos/.config/xbindkeysrc
 
 ###############################################################
 # CONFIGURATION

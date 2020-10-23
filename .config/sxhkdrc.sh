@@ -4,7 +4,7 @@ super + Return
 
 # program launcher
 super + @space
-	  rofi -no-lazy-grab -show drun -theme /etc/nixos/configs/rofi-config.rasi
+	  rofi -no-lazy-grab -show drun -theme /etc/nixos/.config/rofi-config.rasi
 
 super + w
 	  dm-tool lock
