@@ -6,6 +6,7 @@
 " ╚═╝  ╚═══╝╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
 "
 " Neovim config
+" github.com/NickHackman
 
 " {{{ Initialize Vim Plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
