@@ -95,7 +95,6 @@ let g:dir_shortcuts = {
     \ 'Pictures': '~/Pictures',
     \ 'Nixos': '/etc/nixos/',
     \  'Config': '~/.config',
-    \ 'Nvim': '~/.config/nvim',
     \ }
 
 " LookupShortcut from g:dir_shortcuts variable use Fzf to list Keys and
@@ -199,7 +198,7 @@ function! Push(force)
 
     let force = ''
     if a:force
-        force = ' --force'
+        let force = ' --force'
     endif
 
     execute 'Gpush origin ' . head . force
