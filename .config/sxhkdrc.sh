@@ -17,7 +17,7 @@ super + b
 	google-chrome-stable
 
 super + c
-    emacsclient -c
+    kitty -e nvim
 
 Print
 	scrot -q 80 'screenshot-%m-%d-%Y-%r.png' -e 'mv "$f" ~/Pictures/'
