@@ -6,7 +6,7 @@ let
   envVariables = {
     STARSHIP_CONFIG = "/etc/nixos/.config/starship.toml";
     NIX_SHELLS = "/etc/nixos/shells";
-    EDITOR = "emacsclient";
+    EDITOR = "nvim";
     GOPATH = "~/.go";
   };
 
