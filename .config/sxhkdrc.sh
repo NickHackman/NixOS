@@ -17,7 +17,7 @@ super + b
 	google-chrome-stable
 
 super + c
-    kitty -e nvim
+    kitty -e /etc/nixos/.config/tmux-startup.sh
 
 Print
 	scrot -q 80 'screenshot-%m-%d-%Y-%r.png' -e 'mv "$f" ~/Pictures/'
