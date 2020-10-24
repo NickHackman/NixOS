@@ -84,7 +84,12 @@ let g:rainbow_active = 0
 let g:airline_powerline_fonts = 1
 " }}}
 
-" Fzf Shortcut Directories {{{
+" {{{ Keybindings
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+map <leader>; <Plug>NERDCommenterToggle('n', 'Toggle')<Cr>
+
+" {{{ Navigation
 
 " dir_shortcuts for LookupShortcut
 let g:dir_shortcuts = {
@@ -111,16 +116,10 @@ function! LookupShortcut()
 
     call fzf#run({'source': keys(g:dir_shortcuts), 'sink*': function('HandleInput'), 'down': '20%'})
 endfunction
-" }}}
 
-" {{{ Keybindings
-nnoremap <SPACE> <Nop>
-let mapleader=" "
-map <leader>; <Plug>NERDCommenterToggle('n', 'Toggle')<Cr>
-
-" {{{ Navigation
 nnoremap <leader>w <C-w>
 map <leader>t :NERDTreeToggle<CR>
+map <leader><CR> :call LookupShortcut()<CR>
 map <leader><leader> :Files<CR>
 map <leader>b :Buffers<CR>
 map <leader>s :Rg <C-r><C-w><CR>
@@ -134,7 +133,6 @@ let NERDTreeMapChangeRoot = '<CR>'
 
 " {{{ Coc-nvim
 map <leader>e :CocDiagnostics<CR>
-map <leader><CR> :call LookupShortcut()<CR>
 nmap <silent> cd <Plug>(coc-definition)
 nmap <silent> ct <Plug>(coc-type-definition)
 nmap <silent> ci <Plug>(coc-implementation)
@@ -330,7 +328,7 @@ augroup Fugitive
     autocmd FileType fugitive map <leader>ft :Git fetch --tags<CR>
 
     " Branch keybinds
-    autocmd FileType fugitive map <leader>bl :call SelectBranch(function('CheckoutBranch'), 0, 0)<CR>
+    autocmd FileType fugitive map <leader>bl :call SelectBranch(function('CheckoutBranch'), 0, 1)<CR>
     autocmd FileType fugitive map <leader>bc :call SelectBranch(function('CheckoutCreateBranch'), 1, 1)<CR>
     autocmd FileType fugitive map <leader>bn :call SelectBranch(function('CheckoutCreateBranch'), 1, 1)<CR>
     autocmd FileType fugitive map <leader>br :call SelectBranch(function('BranchRename'), 1, 0)<CR>
