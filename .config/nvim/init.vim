@@ -33,6 +33,7 @@ Plug 'LnL7/vim-nix'
 Plug 'plasticboy/vim-markdown'
 
 Plug 'mtth/scratch.vim'
+Plug 'edkolev/tmuxline.vim'
 
 " Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
