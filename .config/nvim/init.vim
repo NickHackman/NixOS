@@ -101,13 +101,13 @@ map <leader>x :Scratch<CR>
 
 " dir_shortcuts for LookupShortcut
 let g:dir_shortcuts = {
-    \ 'Home': '~',
-    \ 'Projects': '~/Projects',
-    \ 'Documents': '~/Documents',
-    \ 'Downloads': '~/Downloads',
-    \ 'Pictures': '~/Pictures',
-    \ 'Nixos': '/etc/nixos/',
-    \  'Config': '~/.config',
+    \ 'home': '~',
+    \ 'projects': '~/Projects',
+    \ 'documents': '~/Documents',
+    \ 'downloads': '~/Downloads',
+    \ 'pictures': '~/Pictures',
+    \ 'nixos': '/etc/nixos/',
+    \  'config': '~/.config',
     \ }
 
 " LookupShortcut from g:dir_shortcuts variable use Fzf to list Keys and
