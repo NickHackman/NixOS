@@ -74,6 +74,7 @@ in {
       top = "ytop";
       vim = "nvim";
       vi = "nvim";
+      tmux = "tmux attach || tmux new";
 
       # Interactive destructive commands
       rm = "rm -i";
