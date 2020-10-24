@@ -32,6 +32,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'LnL7/vim-nix'
 Plug 'plasticboy/vim-markdown'
 
+Plug 'mtth/scratch.vim'
+
 " Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Coc Extensions
@@ -68,6 +70,11 @@ set history=1000
 set foldmethod=marker
 set foldlevel=1
 set signcolumn=yes
+
+let g:scratch_persistence_file = "~/Documents/scratch.md"
+let g:scratch_top = 0
+let g:scratch_height = 15
+let g:scratch_filetype = 'markdown'
 " }}}
 
 " {{{ Themeing
@@ -88,6 +95,7 @@ let g:airline_powerline_fonts = 1
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 map <leader>; <Plug>NERDCommenterToggle('n', 'Toggle')<Cr>
+map <leader>x :Scratch<CR>
 
 " {{{ Navigation
 
