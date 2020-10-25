@@ -220,7 +220,7 @@ function! Push(force)
     endif
 
     function! Callback(job, data, type) closure
-        echom 'Git push to origin/' . head . ' finished'
+        echo 'Push to origin/' . head . ' finished'
         if &ft == 'fugitive'
             execute 'edit %'
         endif
@@ -241,7 +241,7 @@ function! Pull()
     endif
 
     function! Callback(job, data, type) closure
-        echom 'Git pull from origin/' . head . ' finished'
+        echo 'Pull from origin/' . head . ' finished'
         if &ft == 'fugitive'
             execute 'edit %'
         endif
