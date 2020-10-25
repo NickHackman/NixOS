@@ -219,7 +219,7 @@ function! Push(force)
         let force = ' --force'
     endif
 
-    execute 'Gpush origin ' . head . force
+    call jobstart('Gpush origin ' . head . force)
 endfunction
 
 " Pull wraps around Fugitive functionality to automatically to pull from the
@@ -233,7 +233,7 @@ function! Pull()
         return
     endif
 
-    execute 'Gpull origin ' . head
+    call jobstart('Gpull origin ' . head)
 endfunction
 
 " SelectBranch lists all branches using Fzf to user and calls closure on
