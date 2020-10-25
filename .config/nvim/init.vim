@@ -220,7 +220,10 @@ function! Push(force)
     endif
 
     function! Callback(job, data, type)
-        redraw!
+        echom 'Git push finished'
+        if &ft == 'fugitive'
+            execute 'edit %'
+        endif
     endfunction
 
     call jobstart('git push origin ' . head . force, {'on_stdout': 'Callback'})
@@ -237,7 +240,14 @@ function! Pull()
         return
     endif
 
-    call jobstart('nvim -c Git pull origin ' . head)
+    function! Callback(job, data, type)
+        echom 'Git pull finished'
+        if &ft == 'fugitive'
+            execute 'edit %'
+        endif
+    endfunction
+
+    call jobstart('nvim -c Git pull origin ' . head, {'on_stdout': 'Callback'})
 endfunction
 
 " SelectBranch lists all branches using Fzf to user and calls closure on
