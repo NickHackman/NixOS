@@ -220,14 +220,14 @@ function! Push(force)
         let force = ' --force'
     endif
 
-    function! Callback(job, data, type) closure
+    function! FugitiveCustomCallback(job, data, type) closure
         echo 'Push to origin/' . head . ' finished'
         if &ft == 'fugitive'
             execute 'edit %'
         endif
     endfunction
 
-    call jobstart('git push origin ' . head . force, {'on_stdout': 'Callback'})
+    call jobstart('git push origin ' . head . force, {'on_stdout': 'FugitiveCustomCallback'})
 endfunction
 
 " Pull wraps around Fugitive functionality to automatically to pull from the
@@ -241,14 +241,14 @@ function! Pull()
         return
     endif
 
-    function! Callback(job, data, type) closure
+    function! FugitiveCustomCallback(job, data, type) closure
         echo 'Pull from origin/' . head . ' finished'
         if &ft == 'fugitive'
             execute 'edit %'
         endif
     endfunction
 
-    call jobstart('nvim -c Git pull origin ' . head, {'on_stdout': 'Callback'})
+    call jobstart('nvim -c Git pull origin ' . head, {'on_stdout': 'FugitiveCustomCallback'})
 endfunction
 
 " SelectBranch lists all branches using Fzf to user and calls closure on
