@@ -219,7 +219,11 @@ function! Push(force)
         let force = ' --force'
     endif
 
-    call jobstart('git push origin ' . head . force, {'on_stdout': 'edit'})
+    function! Callback(job, data, type)
+        redraw!
+    endfunction
+
+    call jobstart('git push origin ' . head . force, {'on_stdout': 'Callback'})
 endfunction
 
 " Pull wraps around Fugitive functionality to automatically to pull from the
