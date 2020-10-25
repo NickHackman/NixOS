@@ -81,7 +81,7 @@ set emoji
 set mouse=a
 set history=1000
 set foldmethod=marker
-set foldlevel=1
+set foldlevel=0
 set signcolumn=yes
 
 let g:scratch_persistence_file = "~/Documents/scratch.md"
