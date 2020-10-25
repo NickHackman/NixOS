@@ -219,8 +219,8 @@ function! Push(force)
         let force = ' --force'
     endif
 
-    function! Callback(job, data, type)
-        echom 'Git push finished'
+    function! Callback(job, data, type) closure
+        echom 'Git push to origin/' . head . ' finished'
         if &ft == 'fugitive'
             execute 'edit %'
         endif
@@ -240,8 +240,8 @@ function! Pull()
         return
     endif
 
-    function! Callback(job, data, type)
-        echom 'Git pull finished'
+    function! Callback(job, data, type) closure
+        echom 'Git pull from origin/' . head . ' finished'
         if &ft == 'fugitive'
             execute 'edit %'
         endif
