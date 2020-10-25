@@ -53,6 +53,7 @@ let g:coc_global_extensions = [
     \ 'coc-go',
     \ 'coc-vimlsp',
     \ 'coc-python',
+    \ 'coc-clangd',
     \ 'coc-rust-analyzer',
     \ 'coc-json',
     \ 'coc-prettier',

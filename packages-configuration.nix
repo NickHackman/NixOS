@@ -78,6 +78,7 @@ in {
     gradle
     nixfmt
     nodePackages.vim-language-server
+    clang-tools
 
     # Bspwm
     kitty
