@@ -41,6 +41,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
 Plug 'LnL7/vim-nix'
 Plug 'plasticboy/vim-markdown'
+Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'mtth/scratch.vim'
 Plug 'edkolev/tmuxline.vim'
