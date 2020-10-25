@@ -219,7 +219,16 @@ function! Push(force)
         let force = ' --force'
     endif
 
-    call jobstart('nvim -c git push origin ' . head . force)
+    function! Callback(j, d, e)
+        if empty(a:d[0])
+            echom 'Git push finished'
+            return
+        endif
+
+        echom join(a:d, '\n')
+    endfunction
+
+    call jobstart('git push origin ' . head . force, {'stdout_buffered': 1, 'on_stdout': 'Callback'})
 endfunction
 
 " Pull wraps around Fugitive functionality to automatically to pull from the
@@ -233,7 +242,16 @@ function! Pull()
         return
     endif
 
-    call jobstart('git pull origin ' . head)
+    function! Callback(j, d, e)
+        if empty(a:d[0])
+            echom 'Git pull finished'
+            return
+        endif
+
+        echom join(a:d, '\n')
+    endfunction
+
+    call jobstart('git pull origin ' . head, {'stdout_buffered': 1, 'on_stdout': 'Callback'})
 endfunction
 
 " SelectBranch lists all branches using Fzf to user and calls closure on
