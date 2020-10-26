@@ -249,7 +249,7 @@ function! Pull()
         endif
     endfunction
 
-    call jobstart('nvim -c Git pull origin ' . head, {'on_stdout': 'FugitiveCustomCallback'})
+    call jobstart('git pull origin ' . head, {'on_stdout': 'FugitiveCustomCallback'})
 endfunction
 
 " SelectBranch lists all branches using Fzf to user and calls closure on
