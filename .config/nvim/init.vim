@@ -376,6 +376,7 @@ augroup FugitiveRebase
     autocmd FileType gitrebase nmap <buffer> <silent> p :call RebaseInteractive('pick')<CR>
     autocmd FileType gitrebase nmap <buffer> <silent> d :call RebaseInteractive('drop')<CR>
     autocmd FileType gitrebase nmap <buffer> <silent> r :call RebaseInteractive('reword')<CR>
+    autocmd FileType gitrebase nmap <buffer> <silent> s :call RebaseInteractive('squash')<CR>
 augroup end
     
 
