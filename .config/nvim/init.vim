@@ -28,6 +28,7 @@ Plug 'luochen1990/rainbow'
 Plug 'psliwka/vim-smoothie'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Navigation
 Plug 'preservim/nerdtree'
