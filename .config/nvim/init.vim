@@ -351,6 +351,34 @@ endfunction
 
 map <leader>gg :Git<CR>
 
+" RebaseInteractive given an operation replace the first word with that
+" operation.
+function! RebaseInteractive(operation)
+    let line = getline('.')
+    if line[0] == '#' || empty(line)
+        return
+    endif
+
+    let split = split(line)
+    if empty(split)
+        return
+    endif
+
+    let output = join([a:operation] + split[1:], ' ')
+    call setline('.', output)
+endfunction
+
+augroup FugitiveRebase
+    autocmd! FugitiveRebase
+
+    autocmd FileType gitrebase nmap <buffer> <silent> f :call RebaseInteractive('fixup')<CR>
+    autocmd FileType gitrebase nmap <buffer> <silent> e :call RebaseInteractive('edit')<CR>
+    autocmd FileType gitrebase nmap <buffer> <silent> p :call RebaseInteractive('pick')<CR>
+    autocmd FileType gitrebase nmap <buffer> <silent> d :call RebaseInteractive('drop')<CR>
+    autocmd FileType gitrebase nmap <buffer> <silent> r :call RebaseInteractive('reword')<CR>
+augroup end
+    
+
 augroup Fugitive
     autocmd! Fugitive
 
