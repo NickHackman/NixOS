@@ -265,7 +265,10 @@ endfunction
 "
 " includeRemotes: bool
 "   Whether or not to include remotes
-function! SelectBranch(closure, includeHead, includeRemotes)
+"
+" prompt: string
+"   Prompt to display in Fzf
+function! SelectBranch(closure, includeHead, includeRemotes, prompt)
     let Closure = a:closure
     let cmd = 'git branch --list'
     if a:includeRemotes
@@ -293,7 +296,7 @@ function! SelectBranch(closure, includeHead, includeRemotes)
         return
     endif
 
-    call fzf#run({'source': branches, 'sink*': a:closure, 'down': '20%'})
+    call fzf#run({'source': branches, 'sink*': a:closure, 'down': '20%', 'options': ['--prompt', a:prompt]})
 endfunction
 
 " CheckoutBranch checkout selected branch 
@@ -366,11 +369,11 @@ augroup Fugitive
     autocmd FileType fugitive nmap <buffer> <silent> ft :Git fetch --tags<CR>
 
     " Branch keybinds
-    autocmd FileType fugitive nmap <buffer> <silent> bl :call SelectBranch(function('CheckoutBranch'), 0, 1)<CR>
-    autocmd FileType fugitive nmap <buffer> <silent> bc :call SelectBranch(function('CheckoutCreateBranch'), 1, 1)<CR>
-    autocmd FileType fugitive nmap <buffer> <silent> bn :call SelectBranch(function('CheckoutCreateBranch'), 1, 1)<CR>
-    autocmd FileType fugitive nmap <buffer> <silent> br :call SelectBranch(function('BranchRename'), 1, 0)<CR>
-    autocmd FileType fugitive nmap <buffer> <silent> bd :call SelectBranch(function('BranchDelete'), 0, 0)<CR>
+    autocmd FileType fugitive nmap <buffer> <silent> bl :call SelectBranch(function('CheckoutBranch'), 0, 1, 'Branch to checkout... ')<CR>
+    autocmd FileType fugitive nmap <buffer> <silent> bc :call SelectBranch(function('CheckoutCreateBranch'), 1, 1, 'Creating branch starting from... ')<CR>
+    autocmd FileType fugitive nmap <buffer> <silent> bn :call SelectBranch(function('CheckoutCreateBranch'), 1, 1, 'Creating branch starting from... ')<CR>
+    autocmd FileType fugitive nmap <buffer> <silent> br :call SelectBranch(function('BranchRename'), 1, 0, 'Rename branch... ')<CR>
+    autocmd FileType fugitive nmap <buffer> <silent> bd :call SelectBranch(function('BranchDelete'), 0, 0, 'Delete branch... ')<CR>
 augroup end
 " }}}
 " }}}
