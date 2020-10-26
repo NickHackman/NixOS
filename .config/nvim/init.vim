@@ -154,11 +154,11 @@ let NERDTreeMapCustomOpen = '<tab>'
 " }}}
 
 " {{{ Coc-nvim
-map <leader>e :CocDiagnostics<CR>
+nmap <leader>  e :CocDiagnostics<CR>
 nmap <silent> cd <Plug>(coc-definition)
 nmap <silent> ct <Plug>(coc-type-definition)
 nmap <silent> ci <Plug>(coc-implementation)
-nmap <leader>rn <Plug>(coc-rename)
+nmap <leader> rn <Plug>(coc-rename)
 nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
