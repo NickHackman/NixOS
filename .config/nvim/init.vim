@@ -141,7 +141,7 @@ endfunction
 nnoremap <leader>w <C-w>
 map <leader>t :NERDTreeToggle<CR>
 map <leader><CR> :call LookupShortcut()<CR>
-map <leader><leader> :Files<CR>
+map <leader><leader> :call fzf#run({'source': 'fd -uu -E ".git"', 'sink': 'e', 'down': '20%'})<CR>
 map <leader>b :Buffers<CR>
 map <leader>s :Rg <C-r><C-w><CR>
 map <leader>- :e .<CR>
