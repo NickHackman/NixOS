@@ -352,22 +352,26 @@ augroup Fugitive
 
     autocmd FileType fugitive map <Tab> =
 
+    " Rebind fugitive defaults to ']', this is an arbitrary key that I won't
+    " be using
+    autocmd FileType fugitive let g:nremap = {'P': ']', 'p': ']', 'F': ']', 'f': ']', 'b': ']'}
+
     " Push keybinds
-    autocmd FileType fugitive map <leader>pp :call Push(0)<CR>
-    autocmd FileType fugitive map <leader>pf :call Push(1)<CR>
-    autocmd FileType fugitive map <leader>F  :call Pull()<CR>
+    autocmd FileType fugitive map <silent> pp :call Push(0)<CR>
+    autocmd FileType fugitive map <silent> pf :call Push(1)<CR>
+    autocmd FileType fugitive map <silent> F  :call Pull()<CR>
 
     " Fetch keybinds
-    autocmd FileType fugitive map <leader>ff :Git fetch<CR>
-    autocmd FileType fugitive map <leader>fa :Git fetch --all<CR>
-    autocmd FileType fugitive map <leader>ft :Git fetch --tags<CR>
+    autocmd FileType fugitive map <silent> ff :Git fetch<CR>
+    autocmd FileType fugitive map <silent> fa :Git fetch --all<CR>
+    autocmd FileType fugitive map <silent> ft :Git fetch --tags<CR>
 
     " Branch keybinds
-    autocmd FileType fugitive map <leader>bl :call SelectBranch(function('CheckoutBranch'), 0, 1)<CR>
-    autocmd FileType fugitive map <leader>bc :call SelectBranch(function('CheckoutCreateBranch'), 1, 1)<CR>
-    autocmd FileType fugitive map <leader>bn :call SelectBranch(function('CheckoutCreateBranch'), 1, 1)<CR>
-    autocmd FileType fugitive map <leader>br :call SelectBranch(function('BranchRename'), 1, 0)<CR>
-    autocmd FileType fugitive map <leader>bd :call SelectBranch(function('BranchDelete'), 0, 0)<CR>
+    autocmd FileType fugitive map <silent> bl :call SelectBranch(function('CheckoutBranch'), 0, 1)<CR>
+    autocmd FileType fugitive map <silent> bc :call SelectBranch(function('CheckoutCreateBranch'), 1, 1)<CR>
+    autocmd FileType fugitive map <silent> bn :call SelectBranch(function('CheckoutCreateBranch'), 1, 1)<CR>
+    autocmd FileType fugitive map <silent> br :call SelectBranch(function('BranchRename'), 1, 0)<CR>
+    autocmd FileType fugitive map <silent> bd :call SelectBranch(function('BranchDelete'), 0, 0)<CR>
 augroup end
 " }}}
 " }}}
