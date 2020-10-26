@@ -146,7 +146,7 @@ map <leader><leader> :call fzf#run({'source': 'fd -uu -E ".git"', 'sink': 'e', '
 map <leader>b :Buffers<CR>
 map <leader>s :Rg <C-r><C-w><CR>
 map <leader>- :e .<CR>
-map <leader>fp :Files ~/.config/nvim/<CR>
+map <leader>fp :call fzf#run({'source': 'fd "" ~/.config/nvim/ -E "plugged"', 'sink': 'e', 'down': '20%'})<CR>
 map <leader>, :bprev<CR>
 let NERDTreeMapUpdir = '-'
 let NERDTreeMapCustomOpen = '<tab>'
