@@ -390,6 +390,7 @@ augroup Fugitive
 
     " Rebind p to Nop instead of Fugitive's echo
     autocmd FileType fugitive nmap <buffer> <silent> p <Nop>
+    autocmd FileType fugitive nmap <buffer> <silent> L :Git log --date='relative' --decorate='short'<CR>
 
     " Push keybinds
     autocmd FileType fugitive nmap <buffer> <silent> pp :call Push(0)<CR>
