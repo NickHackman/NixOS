@@ -111,6 +111,8 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 map <leader>; <Plug>NERDCommenterToggle('n', 'Toggle')<Cr>
 map <leader>x :Scratch<CR>
+vmap <Tab> >
+vmap <S-Tab> <
 
 " {{{ Navigation
 
