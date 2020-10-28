@@ -157,13 +157,26 @@ let NERDTreeMapCustomOpen = '<tab>'
 " }}}
 
 " {{{ Coc-nvim
-nmap <leader>  e :CocDiagnostics<CR>
-nmap <silent> cd <Plug>(coc-definition)
-nmap <silent> ct <Plug>(coc-type-definition)
-nmap <silent> ci <Plug>(coc-implementation)
-nmap <leader> rn <Plug>(coc-rename)
-nmap <silent> gr <Plug>(coc-references)
+let g:NERDCreateDefaultMappings = 0
+
+nnoremap <leader>  e :CocDiagnostics<CR>
+nmap <silent> <leader>cd <Plug>(coc-definition)
+nmap <silent> <leader>ct <Plug>(coc-type-definition)
+nmap <silent> <leader>ci <Plug>(coc-implementation)
+nmap <leader> <leader>cR <Plug>(coc-rename)
+nmap <silent> <leader>cr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<C-n>" :
