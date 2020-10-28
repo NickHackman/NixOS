@@ -376,6 +376,14 @@ function! BranchDelete(branch)
     execute 'Git branch --delete ' a:branch[0]
 endfunction
 
+function! Merge(branch)
+    if empty(a:branch[0])
+        return
+    endif
+
+    execute printf('Git merge -e %s', a:branch[0])
+endfunction
+
 map <leader>gg :Git<CR>
 
 " RebaseInteractive given an operation replace the first word with that
@@ -420,6 +428,7 @@ augroup Fugitive
     autocmd FileType fugitive nmap <buffer> <silent> pp :call Push(0)<CR>
     autocmd FileType fugitive nmap <buffer> <silent> pf :call Push(1)<CR>
     autocmd FileType fugitive nmap <buffer> <silent> F  :call Pull()<CR>
+    autocmd FileType fugitive nmap <buffer> <silent> m  :call SelectBranch(function('Merge'), 0, 1, 'Merge... ')<CR>
 
     " Fetch keybinds
     autocmd FileType fugitive nmap <buffer> <silent> ff :Git fetch<CR>
