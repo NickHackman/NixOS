@@ -310,17 +310,22 @@ function! SelectBranch(closure, includeHead, includeRemotes, prompt)
     if !a:includeHead
         let index = index(allBranches, '*')
 
-        if !index
-            echom 'No other branches'
+        if index == -1
             return
         endif
 
-        let branches = allBranches[:index - 1] + allBranches[index + 2:]
+        if index == 0
+            let branches = allBranches[2:]
+        else
+            let branches = allBranches[:index - 1] + allBranches[index + 2:]
+        endif
+
     else
         let branches = filter(allBranches, 'v:val != "*"')
     endif
 
     if empty(branches)
+        echom 'No other branches'
         return
     endif
 
