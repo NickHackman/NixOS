@@ -238,13 +238,23 @@ function! Push(force)
     endif
 
     function! FugitiveCustomCallback(job, data, type) closure
-        echo 'Push to origin/' . head . ' finished'
+        let lines = a:data[:-2]
+        let output = join(lines, '\n')
+
+        if empty(output)
+            echo 'Git push origin/' . head . ' finished'
+        else
+            echo output
+        endif
+
         if &ft == 'fugitive'
             execute 'edit %'
         endif
     endfunction
 
-    call jobstart('git push origin ' . head . force, {'on_stdout': 'FugitiveCustomCallback'})
+    let cmd = printf('git push origin %s %s', head, force)
+
+    call jobstart(cmd, {'on_stdout': 'FugitiveCustomCallback', 'stdout_buffered': 1})
 endfunction
 
 " Pull wraps around Fugitive functionality to automatically to pull from the
@@ -259,7 +269,8 @@ function! Pull()
     endif
 
     function! FugitiveCustomCallback(job, data, type) closure
-        echo 'Pull from origin/' . head . ' finished'
+        let lines = a:data[:-2]
+        echo join(lines, '\n')
         if &ft == 'fugitive'
             execute 'edit %'
         endif
@@ -267,7 +278,9 @@ function! Pull()
 
     let repository = expand('%:p:h:h')
 
-    call jobstart('git -C ' . repository . ' pull origin ' . head, {'on_stdout': 'FugitiveCustomCallback'})
+    let cmd = printf('git -C %s pull origin %s', repository, head)
+
+    call jobstart(cmd, {'on_stdout': 'FugitiveCustomCallback', 'stdout_buffered': 1})
 endfunction
 
 " SelectBranch lists all branches using Fzf to user and calls closure on
