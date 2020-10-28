@@ -136,7 +136,7 @@ function! LookupShortcut()
         endif
 
         let first = a:key[0]
-        exec "edit" . g:dir_shortcuts[first] . "/."
+        exec printf("edit %s/.", g:dir_shortcuts[first])
     endfunction
 
     call fzf#run({'source': keys(g:dir_shortcuts), 'sink*': function('HandleInput'), 'down': '20%'})
@@ -242,7 +242,7 @@ function! Push(force)
         let output = join(lines, '\n')
 
         if empty(output)
-            echo 'Git push origin/' . head . ' finished'
+            echo printf("Git push origin/%s finished", head)
         else
             echo output
         endif
