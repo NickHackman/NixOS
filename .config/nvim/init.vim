@@ -223,8 +223,6 @@ augroup end
 
 " Push wraps around Fugitive functionality to automatically to push to the
 " remote branch
-"
-" TODO: Handle other remotes than just origin
 function! Push(force)
     let head = FugitiveHead('.')
     " HEAD is detached
@@ -259,8 +257,6 @@ endfunction
 
 " Pull wraps around Fugitive functionality to automatically to pull from the
 " remote branch
-"
-" TODO: Handle other remotes than just origin
 function! Pull()
     let head = FugitiveHead('.')
     " HEAD is detached
