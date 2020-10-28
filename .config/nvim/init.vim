@@ -265,7 +265,9 @@ function! Pull()
         endif
     endfunction
 
-    call jobstart('git pull origin ' . head, {'on_stdout': 'FugitiveCustomCallback'})
+    let repository = expand('%:p:h:h')
+
+    call jobstart('git -C ' . repository . ' pull origin ' . head, {'on_stdout': 'FugitiveCustomCallback'})
 endfunction
 
 " SelectBranch lists all branches using Fzf to user and calls closure on
