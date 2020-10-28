@@ -159,7 +159,7 @@ let NERDTreeMapCustomOpen = '<tab>'
 " {{{ Coc-nvim
 let g:NERDCreateDefaultMappings = 0
 
-nnoremap <leader>  e :CocDiagnostics<CR>
+nnoremap <leader>e :CocDiagnostics<CR>
 nmap <silent> <leader>cd <Plug>(coc-definition)
 nmap <silent> <leader>ct <Plug>(coc-type-definition)
 nmap <silent> <leader>ci <Plug>(coc-implementation)
