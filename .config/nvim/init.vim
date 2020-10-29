@@ -391,7 +391,18 @@ function! Merge(branch)
     execute printf('Git merge -e %s', a:branch[0])
 endfunction
 
-map <leader>gg :Git<CR>
+" Open Git repository even in NERDTree
+function! OpenGit()
+    let path = expand('%')
+    if &ft == "nerdtree"
+        let path = b:NERDTree.getRoot().path.str()
+        execute printf('cd %s', path)
+    endif
+
+    execute 'Git'
+endfunction
+
+map <leader>gg :call OpenGit()<CR>
 
 " RebaseInteractive given an operation replace the first word with that
 " operation.
