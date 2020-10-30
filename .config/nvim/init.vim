@@ -125,7 +125,7 @@ let g:dir_shortcuts = {
     \ 'documents': '~/Documents',
     \ 'downloads': '~/Downloads',
     \ 'pictures': '~/Pictures',
-    \ 'nixos': '/etc/nixos/',
+    \ 'nixos': '/etc/nixos',
     \  'config': '~/.config',
     \ }
 
@@ -144,6 +144,26 @@ function! LookupShortcut()
     call fzf#run({'source': keys(g:dir_shortcuts), 'sink*': function('HandleInput'), 'down': '20%'})
 endfunction
 
+function! ProjectSelector()
+    let filenames = globpath(expand('~/Projects'), '*', 0, 1)
+
+    let files = {}
+    for f in filenames
+        let files[fnamemodify(f, ':t')] = f
+    endfor
+
+    function! HandleInput(key) closure
+        if empty(a:key)
+            return
+        endif
+
+        let first = a:key[0]
+        exec printf("edit %s/.", files[first])
+    endfunction
+
+    call fzf#run({'source': keys(files), 'sink*': function('HandleInput'), 'down': '20%', 'options': ['--prompt', 'Projects... ']})
+endfunction
+
 nnoremap <leader>w <C-w>
 map <leader>t :NERDTreeToggle<CR>
 map <leader><CR> :call LookupShortcut()<CR>
@@ -151,6 +171,7 @@ map <leader><leader> :call fzf#run({'source': 'fd -uu -E ".git"', 'sink': 'e', '
 map <leader>b :Buffers<CR>
 map <leader>s :Rg <C-r><C-w><CR>
 map <leader>- :e .<CR>
+map <leader>pp :call ProjectSelector()<CR>
 map <leader>fp :call fzf#run({'source': 'fd "" ~/.config/nvim/ -E "plugged"', 'sink': 'e', 'down': '20%'})<CR>
 map <leader>, :bprev<CR>
 let NERDTreeMapUpdir = '-'
