@@ -239,7 +239,7 @@ function! Push(force)
 
     function! FugitiveCustomCallback(job, data, type) closure
         let lines = a:data[:-2]
-        let output = join(lines, '\n')
+        let output = join(lines, "\n")
 
         if empty(output)
             echo printf("Git push origin/%s finished", head)
@@ -268,7 +268,7 @@ function! Pull()
 
     function! FugitiveCustomCallback(job, data, type) closure
         let lines = a:data[:-2]
-        echo join(lines, '\n')
+        echo join(lines, "\n")
         if &ft == 'fugitive'
             execute 'edit %'
         endif
