@@ -63,6 +63,7 @@ let g:coc_global_extensions = [
     \ 'coc-spell-checker',
     \ 'coc-highlight',
     \ 'coc-marketplace',
+    \ 'coc-gitignore',
     \ ]
 
 call plug#end()
@@ -167,6 +168,7 @@ nmap <silent> <leader>ci <Plug>(coc-implementation)
 nmap <leader> <leader>cR <Plug>(coc-rename)
 nmap <silent> <leader>cr <Plug>(coc-references)
 nmap <leader>mp :CocList marketplace<CR>
+nmap <leader>gi :CocList gitignore<CR>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
