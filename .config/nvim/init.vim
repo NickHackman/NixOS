@@ -173,6 +173,7 @@ map <leader>s :Rg <C-r><C-w><CR>
 map <leader>- :e .<CR>
 map <leader>pp :call ProjectSelector()<CR>
 map <leader>fp :call fzf#run({'source': 'fd "" ~/.config/nvim/ -E "plugged"', 'sink': 'e', 'down': '20%'})<CR>
+map <leader>so :source ~/.config/nvim/init.vim<CR>
 map <leader>, :bprev<CR>
 let NERDTreeMapUpdir = '-'
 let NERDTreeMapCustomOpen = '<tab>'
