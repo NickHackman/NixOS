@@ -322,31 +322,20 @@ endfunction
 " prompt: string
 "   Prompt to display in Fzf
 function! SelectBranch(closure, includeHead, includeRemotes, prompt)
-    let Closure = a:closure
     let cmd = 'git branch --list'
     if a:includeRemotes
-        let cmd = cmd . ' -a'
+        let cmd = cmd .. ' -a'
     endif
 
-    let output = system(cmd)
-    let allBranches = split(output)
-    let branches = []
+    let branches = split(system(cmd), "\n")
+
+    let branches = map(branches, 'trim(v:val)')
+    let branches = map(branches, 'substitute(v:val, "^remotes/", "", "")')
 
     if !a:includeHead
-        let index = index(allBranches, '*')
-
-        if index == -1
-            return
-        endif
-
-        if index == 0
-            let branches = allBranches[2:]
-        else
-            let branches = allBranches[:index - 1] + allBranches[index + 2:]
-        endif
-
+        let branches = filter(branches, 'v:val[0] != "*"')
     else
-        let branches = filter(allBranches, 'v:val != "*"')
+        let branches = map(branches, 'substitute(v:val, "\* ", "", "")')
     endif
 
     if empty(branches)
@@ -354,64 +343,56 @@ function! SelectBranch(closure, includeHead, includeRemotes, prompt)
         return
     endif
 
-    call fzf#run({'source': branches, 'sink*': a:closure, 'down': '20%', 'options': ['--prompt', a:prompt]})
+    function! Handler(branch) closure
+        if empty(a:branch)
+            return
+        endif
+
+        call a:closure(a:branch[0])
+    endfunction
+
+    call fzf#run({'source': branches, 'sink*': function('Handler'), 'down': '20%', 'options': ['--prompt', a:prompt]})
 endfunction
 
 " CheckoutBranch checkout selected branch 
 "
 " NOTE: callback for SelectBranch
 function! CheckoutBranch(branch)
-    execute 'Git checkout ' . a:branch[0]
+    execute 'Git checkout ' . a:branch
 endfunction
 
 " CheckoutCreateBranch create a new branch and checkout the new branch
 "
 " NOTE: callback for SelectBranch
 function! CheckoutCreateBranch(branch)
-    if empty(a:branch[0])
-        return
-    endif
-
     call inputsave()
-    let newBranch = input('[Starting: ' . a:branch[0] . '] Branch to checkout: ')
+    let newBranch = input('[Starting: ' . a:branch . '] Branch to checkout: ')
     call inputrestore()
-    silent execute 'Git checkout -b ' . newBranch . ' ' . a:branch[0]
+    silent execute 'Git checkout -b ' . newBranch . ' ' . a:branch
 endfunction
 
 " BranchRename callback for SelectBranch
 "
 " NOTE: callback for SelectBranch
 function! BranchRename(branch)
-    if empty(a:branch[0])
-        return
-    endif
-
     call inputsave()
-    let newBranch = input('Rename ' . a:branch[0] . ' to: ')
+    let newBranch = input('Rename ' . a:branch .. ' to: ')
     call inputrestore()
-    execute 'Git branch --move ' . a:branch[0] . ' ' . newBranch
+    execute 'Git branch --move ' . a:branch .. ' ' . newBranch
 endfunction
 
 " BranchDelete delete a branch
 "
 " NOTE: callback for SelectBranch
 function! BranchDelete(branch)
-    if empty(a:branch[0])
-        return
-    endif
-
     call inputsave()
-    let confirm = input('Delete ' . a:branch[0] . ' [y/N]: ')
+    let confirm = input('Delete ' .. a:branch .. ' [y/N]: ')
     call inputrestore()
-    execute 'Git branch --delete ' a:branch[0]
+    execute 'Git branch --delete ' .. a:branch
 endfunction
 
 function! Merge(branch)
-    if empty(a:branch[0])
-        return
-    endif
-
-    execute printf('Git merge -e %s', a:branch[0])
+    execute printf('Git merge -e %s', a:branch)
 endfunction
 
 " Open Git repository even in NERDTree
