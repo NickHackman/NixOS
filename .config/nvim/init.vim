@@ -482,6 +482,7 @@ set shortmess+=c
 filetype plugin on
 
 autocmd BufWritePre *.go :CocCommand editor.action.organizeImport
+autocmd BufWritePre *.java :CocCommand editor.action.organizeImport
 " }}}
 
 " {{{ NERDTree Configuration
