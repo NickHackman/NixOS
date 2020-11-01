@@ -65,6 +65,7 @@ in {
       # Rust replacements for GNU Coreutils
       ls = "exa --icons --git";
       l = "exa --icons --git -l";
+      tls = "tmux ls";
       la = "exa --icons --git -la";
       cat = "bat";
       grep = "rg";
