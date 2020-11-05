@@ -18,6 +18,7 @@
   "python.linting.pylintEnabled": true,
   "python.formatting.provider": "black",
   "python.linting.mypyEnabled": true,
+  "python.sortImports.path": "/run/current-system/sw/bin/isort",
 
   "java.saveActions.organizeImports": true
 }
