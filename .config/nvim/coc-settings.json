@@ -11,7 +11,9 @@
     }
   },
 
-  "python.linting.pylintPath": "/nix/store/d3hf5wsfd4wx03vfsx0mfln9hkpy4sbr-system-path/bin/pylint",
+  "python.linting.pylintPath": "/run/current-system/bin/sw/bin/pylint",
+  "python.formatting.blackPath": "/run/current-system/sw/bin/black",
+  "python.linting.mypyPath": "/run/current-system/sw/bin/mypy",
   "python.linting.pylintUseMinimalCheckers": false,
   "python.linting.pylintEnabled": true,
   "python.formatting.provider": "black",
