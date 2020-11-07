@@ -52,13 +52,6 @@
     printing.enable = true;
     blueman.enable = true;
 
-    # Emacs
-    emacs = {
-      defaultEditor = true;
-      enable = true;
-      package = pkgs.unstable.emacs;
-    };
-
     lorri.enable = true;
 
     logind.extraConfig = "IdleAction=lock";

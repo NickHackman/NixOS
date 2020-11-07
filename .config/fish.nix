@@ -82,7 +82,6 @@ in {
       cp = "cp -i";
       mv = "mv -i";
 
-      emacs = "emacsclient";
       xclip = "xclip -selection clipboard";
       "..." = "cd ../..";
 
