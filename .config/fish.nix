@@ -64,6 +64,7 @@ in {
     shellAliases = {
       # Rust replacements for GNU Coreutils
       ls = "exa --icons --git";
+      fk = "fuck";
       l = "exa --icons --git -l";
       tls = "tmux ls";
       la = "exa --icons --git -la";
@@ -72,7 +73,7 @@ in {
       find = "fd";
       du = "dust";
       ps = "procs";
-      top = "ytop";
+      top = "btm";
       vim = "nvim";
       vi = "nvim";
 

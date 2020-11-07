@@ -10,6 +10,8 @@ let
 
   unstable = import unstableTarball { config = config.nixpkgs.config; };
 
+  unstableChan = import <nixos-unstable> {};
+
 in {
   imports = [ ./.config/fish.nix ];
 
@@ -34,7 +36,8 @@ in {
     ripgrep
     git
     unstable.gitAndTools.gh
-    ytop
+    # HACK: unable to reference bottom with the unstable tarball, but from the channel
+    unstableChan.bottom
     zip
     unzip
     unstable.tokei
@@ -79,6 +82,7 @@ in {
     nixfmt
     nodePackages.vim-language-server
     clang-tools
+    thefuck
 
     # Bspwm
     kitty
