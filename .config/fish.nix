@@ -10,6 +10,37 @@ let
     GOPATH = "~/.go";
   };
 
+  # Colorscheme for Fish modeled after Vim One Dark
+  #
+  # https://github.com/joshdick/onedark.vim#color-reference
+  colorscheme = {
+    fish_color_normal = "#282C34";
+    fish_color_command = "#61AFEF";
+    fish_color_error = "#E06C75";
+    fish_color_comment = "#ABB2BF";
+    fish_color_quote = "#98C379";
+    fish_color_end = "#C678DD";
+    fish_color_param = "#56B6C2";
+    fish_color_redirection = "#E5C07B";
+  };
+
+  # Maps and folds `colorscheme` into a String of the form
+  #
+  # ''
+  # set -U fish_color_normal 282C34
+  # set -U fish_color_command 61AFEF
+  # set -U fish_color_error E06C75
+  # set -U fish_color_comment ABB2BF
+  # set -U fish_color_quote 98C379
+  # set -U fish_color_end C678DD
+  # set -U fish_color_param 56B6C2
+  # set -U fish_color_redirection E5C07B
+  # '';
+  colors = with builtins; 
+  lib.fold(a: b: a + b) "" (attrValues (mapAttrs (cmd: color: ''
+    set -U ${cmd} ${substring 1 (stringLength color) color}
+  '') colorscheme));
+
   # List of supported languages for Nix Shells and Lorri inits
   langs =
     [ "elm" "c" "go" "rust" "node" "java" "python" "markdown" "nix" "linux" ];
@@ -93,6 +124,8 @@ in {
     # Fish Initializing
     shellInit = ''
       ${fish-environment-variables}
+
+      ${colors}
 
       fish_vi_key_bindings
       starship init fish | source'';
