@@ -99,6 +99,7 @@ in {
 
   programs.light.enable = true;
   programs.nm-applet.enable = true;
+  programs.adb.enable = true;
 
   # Fonts
   fonts.fonts = with pkgs; [
