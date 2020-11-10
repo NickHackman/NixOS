@@ -106,6 +106,16 @@ colorscheme onedark
 let g:vim_markdown_conceal = 1
 let g:rainbow_active = 0
 let g:airline_powerline_fonts = 1
+
+let g:tmuxline_preset = {
+    \ 'a': '#S',
+    \'win'  : '#I #W',
+    \'cwin' : '#I #W',
+    \ 'x': '%m-%d-%Y',
+    \ 'y': '%I:%M %p',
+    \ 'z': '#(whoami)@#H',
+    \ 'options': {
+    \ 'status-justify': 'left'}}
 " }}}
 
 " {{{ Keybindings
