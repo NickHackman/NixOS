@@ -83,6 +83,7 @@ in {
     nodePackages.vim-language-server
     clang-tools
     thefuck
+    fzf
 
     # Bspwm
     kitty

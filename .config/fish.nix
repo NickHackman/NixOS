@@ -107,6 +107,7 @@ in {
       top = "btm";
       vim = "nvim";
       vi = "nvim";
+      ta = "tmux a -t (env FZF_DEFAULT_COMMAND='tmux ls -F \"#S\"' fzf -1)";
 
       # Interactive destructive commands
       rm = "rm -i";
