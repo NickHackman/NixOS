@@ -87,6 +87,7 @@ set history=1000
 set foldmethod=marker
 set foldlevel=0
 set signcolumn=yes
+set autochdir
 
 let g:scratch_persistence_file = "~/Documents/scratch.md"
 let g:scratch_top = 0
