@@ -198,7 +198,7 @@ nnoremap <leader>e :CocDiagnostics<CR>
 nmap <silent> <leader>cd <Plug>(coc-definition)
 nmap <silent> <leader>ct <Plug>(coc-type-definition)
 nmap <silent> <leader>ci <Plug>(coc-implementation)
-nmap <leader> <leader>cR <Plug>(coc-rename)
+nmap <silent> <leader>cR <Plug>(coc-rename)
 nmap <silent> <leader>cr <Plug>(coc-references)
 nmap <leader>mp :CocList marketplace<CR>
 nmap <leader>gi :CocList gitignore<CR>
