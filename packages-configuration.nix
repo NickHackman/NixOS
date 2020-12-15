@@ -75,6 +75,8 @@ in {
     pandoc
     nodePackages.prettier
     pipenv
+    httpie
+    unstableChan.nodePackages.expo-cli
     (unstable.python3.withPackages
       (ps: with ps; [ flake8 mypy python-language-server isort black jedi]))
     openjdk11

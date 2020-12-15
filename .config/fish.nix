@@ -7,7 +7,6 @@ let
     STARSHIP_CONFIG = "/etc/nixos/.config/starship.toml";
     NIX_SHELLS = "/etc/nixos/shells";
     EDITOR = "nvim";
-    GOPATH = "~/.go";
   };
 
   # Colorscheme for Fish modeled after Vim One Dark
@@ -107,7 +106,7 @@ in {
       top = "btm";
       vim = "nvim";
       vi = "nvim";
-      ta = "tmux a -t (env FZF_DEFAULT_COMMAND='tmux ls -F \"#S\"' fzf -1)";
+      ta = "tmux a -t (env FZF_DEFAULT_COMMAND='tmux ls -F \"#S\"' fzf -1 --no-multi --prompt=\"Select a session: \")";
 
       # Interactive destructive commands
       rm = "rm -i";

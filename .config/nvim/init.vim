@@ -249,8 +249,8 @@ endfunction
 
 augroup Markdown
     autocmd! Markdown
-    autocmd FileType markdown map K <Plug>Markdown_OpenUrlUnderCursor
-    autocmd FileType markdown nmap <silent> <Tab> :call ToggleHeader()<CR>
+    autocmd FileType markdown nmap <buffer> K <Plug>Markdown_OpenUrlUnderCursor
+    autocmd FileType markdown nmap <buffer> <silent> <Tab> :call ToggleHeader()<CR>
 augroup end
 
 " }}}
@@ -440,12 +440,12 @@ endfunction
 augroup FugitiveRebase
     autocmd! FugitiveRebase
 
-    autocmd FileType gitrebase nmap <buffer> <silent> f :call RebaseInteractive('fixup')<CR>
-    autocmd FileType gitrebase nmap <buffer> <silent> e :call RebaseInteractive('edit')<CR>
-    autocmd FileType gitrebase nmap <buffer> <silent> p :call RebaseInteractive('pick')<CR>
-    autocmd FileType gitrebase nmap <buffer> <silent> d :call RebaseInteractive('drop')<CR>
-    autocmd FileType gitrebase nmap <buffer> <silent> r :call RebaseInteractive('reword')<CR>
-    autocmd FileType gitrebase nmap <buffer> <silent> s :call RebaseInteractive('squash')<CR>
+    autocmd FileType gitrebase nmap <buffer> <silent> <leader>f :call RebaseInteractive('fixup')<CR>
+    autocmd FileType gitrebase nmap <buffer> <silent> <leader>e :call RebaseInteractive('edit')<CR>
+    autocmd FileType gitrebase nmap <buffer> <silent> <leader>p :call RebaseInteractive('pick')<CR>
+    autocmd FileType gitrebase nmap <buffer> <silent> <leader>d :call RebaseInteractive('drop')<CR>
+    autocmd FileType gitrebase nmap <buffer> <silent> <leader>r :call RebaseInteractive('reword')<CR>
+    autocmd FileType gitrebase nmap <buffer> <silent> <leader>s :call RebaseInteractive('squash')<CR>
 augroup end
     
 
